@@ -6,6 +6,7 @@ public class ObstaclesGenerator : MonoBehaviour
     public float distanceBetweenRows = 18;
     public float minGapSize = 3;
     public float maxGapSize = 5;
+    public float minimumObstacleWidth = 1;
     public Transform obstaclePrefab;
     public Transform ground;
 
@@ -34,7 +35,7 @@ public class ObstaclesGenerator : MonoBehaviour
 
     private float GapSizeForRow(int row)
     {
-        return Mathf.Lerp(minGapSize, maxGapSize, row / rows);
+        return Mathf.Lerp(maxGapSize, minGapSize, row / rows);
     }
 
     private void CreateObstacleRow(int row)
@@ -56,7 +57,8 @@ public class ObstaclesGenerator : MonoBehaviour
 
     private float RandomGapCenterX(float gapSize)
     {
-        return Random.Range(0, GroundWidth - gapSize) + (gapSize / 2) - GroundWidth / 2;
+        return Random.Range(minimumObstacleWidth, GroundWidth - gapSize - minimumObstacleWidth) +
+            (gapSize / 2) - GroundWidth / 2;
     }
 
 
