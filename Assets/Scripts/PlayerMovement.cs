@@ -39,4 +39,10 @@ public class PlayerMovement : MonoBehaviour
         float force = forceModifier * sidewaysForce * Time.deltaTime;
         rigidBody.AddForce(force, 0, 0, sidewaysForceMode);
     }
+
+    public void StopPlayer()
+    {
+        enabled = false;
+        rigidBody.AddForce(rigidBody.velocity * -0.5f);
+    }
 }

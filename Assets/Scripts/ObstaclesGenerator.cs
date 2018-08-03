@@ -2,13 +2,15 @@
 
 public class ObstaclesGenerator : MonoBehaviour
 {
-    public float rows = 5;
+    public int rows = 5;
     public float distanceBetweenRows = 18;
     public float minGapSize = 3;
     public float maxGapSize = 5;
     public float minimumObstacleWidth = 1;
-    public Transform obstaclePrefab;
+
     public Transform ground;
+    public Transform obstaclePrefab;
+    public Transform endGamePrefab;
 
     void Start()
     {
@@ -20,6 +22,13 @@ public class ObstaclesGenerator : MonoBehaviour
         RemoveObstacles();
         for (int i = 0; i < rows; i++)
             CreateObstacleRow(i);
+        CreateEndGame();
+    }
+
+    private void CreateEndGame()
+    {
+        var position = GetInitialPositionForRow(rows - 1) + Vector3.forward * 5;
+        Instantiate(endGamePrefab, position, Quaternion.identity);
     }
 
     public void RemoveObstacles()

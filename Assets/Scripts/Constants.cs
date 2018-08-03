@@ -6,6 +6,8 @@
         {
             public const string GROUND = "Ground";
             public const string OBSTACLE = "Obstacle";
+            public const string PLAYER = "Player";
+
         }
     }
 }

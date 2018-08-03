@@ -11,13 +11,6 @@ public class PlayerCollision : MonoBehaviour
             return;
 
         GameManager.GetGameManager().EndGame();
-        StopPlayer();
-    }
-
-    private void StopPlayer()
-    {
-        movement.enabled = false;
-        var rigidbody = movement.GetComponent<Rigidbody>();
-        rigidbody.AddForce(rigidbody.velocity * -0.5f);
+        movement.StopPlayer();
     }
 }

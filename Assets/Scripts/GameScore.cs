@@ -6,6 +6,7 @@ public class GameScore : MonoBehaviour
     public PlayerMovement player;
     public Text scoreText;
     private string lastScore;
+    private static readonly string SCORE_FORMAT = "Level: {0}\nScore: {1}";
 
     private void Start()
     {
@@ -14,7 +15,7 @@ public class GameScore : MonoBehaviour
 
     private void OnGameEnded(object sender, System.EventArgs e)
     {
-        scoreText.text = System.String.Format("Game Over! Score: {0}", lastScore);
+        scoreText.text = string.Format("Game Over! Score: {0}", lastScore);
     }
 
     private void Update()
@@ -22,7 +23,7 @@ public class GameScore : MonoBehaviour
         if (player.enabled)
         {
             lastScore = CurrentPlayerZ();
-            scoreText.text = lastScore;
+            scoreText.text = string.Format(SCORE_FORMAT, GameManager.GetGameManager().CurrentLevel, lastScore);
         }
     }
 
