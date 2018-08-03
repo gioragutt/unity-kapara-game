@@ -11,7 +11,7 @@ public class ObstaclesGeneratorEditor : Editor
         if (GUILayout.Button("Regenerate Obstacles"))
             Script.GenerateObstacles();
         if (GUILayout.Button("Remove Obstacles"))
-            Script.RemoveObstacles();
+            Script.RemoveObstaclesFromEditor();
     }
 
     public ObstaclesGenerator Script

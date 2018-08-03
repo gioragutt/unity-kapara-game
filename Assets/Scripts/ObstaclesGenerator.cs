@@ -28,13 +28,19 @@ public class ObstaclesGenerator : MonoBehaviour
     private void CreateEndGame()
     {
         var position = GetInitialPositionForRow(rows - 1) + Vector3.forward * 5;
-        Instantiate(endGamePrefab, position, Quaternion.identity);
+        Instantiate(endGamePrefab, position, Quaternion.identity, transform);
     }
 
-    public void RemoveObstacles()
+    public void RemoveObstaclesFromEditor()
     {
         while (transform.childCount > 0)
             DestroyImmediate(transform.GetChild(0).gameObject);
+    }
+
+    private void RemoveObstacles()
+    {
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
     }
 
     private Vector3 GetInitialPositionForRow(int row)
