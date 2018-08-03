@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rigidBody;
-    public float forwardForce;
-    public float slideForce;
-    public ForceMode slideForceMode = ForceMode.VelocityChange;
+    public float forwardForce = 4000f;
+    public float sidewaysForce = 120f;
+    public ForceMode sidewaysForceMode = ForceMode.VelocityChange;
 
     public KeyCode leftMovementKey = KeyCode.A;
     public KeyCode rightMovementKey = KeyCode.D;
@@ -16,18 +17,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(leftMovementKey))
         {
-            ApplySideForce(-1);
+            ApplySidewaysForce(-1);
         }
 
         if (Input.GetKey(rightMovementKey))
         {
-            ApplySideForce(1);
+            ApplySidewaysForce(1);
         }
     }
 
-    private void ApplySideForce(float forceModifier)
+    private void ApplySidewaysForce(float forceModifier)
     {
-        float force = forceModifier * slideForce * Time.deltaTime;
-        rigidBody.AddForce(force, 0, 0, slideForceMode);
+        float force = forceModifier * sidewaysForce * Time.deltaTime;
+        rigidBody.AddForce(force, 0, 0, sidewaysForceMode);
     }
 }

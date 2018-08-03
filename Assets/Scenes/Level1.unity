@@ -2383,9 +2383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1794706187}
-  forwardForce: 2000
-  slideForce: 75
-  slideForceMode: 2
+  forwardForce: 4000
+  sidewaysForce: 120
+  sidewaysForceMode: 2
   leftMovementKey: 97
   rightMovementKey: 100
 --- !u!114 &1794706189
