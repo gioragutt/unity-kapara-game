@@ -6,7 +6,6 @@ public class GameScore : MonoBehaviour
     public PlayerMovement player;
     public Text scoreText;
     private string lastScore;
-    private static readonly string SCORE_FORMAT = "Level: {0}\nScore: {1}";
 
     private void Start()
     {
@@ -23,7 +22,7 @@ public class GameScore : MonoBehaviour
         if (player.enabled)
         {
             lastScore = CurrentPlayerZ();
-            scoreText.text = string.Format(SCORE_FORMAT, GameManager.GetGameManager().CurrentLevel, lastScore);
+            scoreText.text = lastScore;
         }
     }
 

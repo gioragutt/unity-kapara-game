@@ -10,15 +10,6 @@ public class GameManager : MonoBehaviour
     public ObstaclesGenerator obstacles;
 
     private bool gameHasEnded = false;
-    private int _currentLevel = 1;
-
-    public int CurrentLevel
-    {
-        get
-        {
-            return _currentLevel;
-        }
-    }
 
     public static GameManager GetGameManager()
     {
@@ -27,11 +18,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        obstacles.rows++;
-        obstacles.distanceBetweenRows -= 2;
-        obstacles.maxGapSize -= 0.5f;
-        obstacles.minGapSize -= 0.3f;
-        _currentLevel++;
         RestartGame();
     }
 
@@ -47,7 +33,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        _currentLevel = 1;
         gameHasEnded = true;
         GameEnded.Invoke(null, null);
         Invoke("RestartGame", restartDelay);
