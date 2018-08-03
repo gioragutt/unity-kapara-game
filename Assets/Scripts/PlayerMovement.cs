@@ -24,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
         {
             ApplySidewaysForce(1);
         }
+
+        EndGameIfFallenOffPlatform();
+    }
+
+    private void EndGameIfFallenOffPlatform()
+    {
+        if (rigidBody.position.y < -1f)
+            GameManager.GetGameManager().EndGame();
     }
 
     private void ApplySidewaysForce(float forceModifier)
