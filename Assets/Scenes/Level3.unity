@@ -204,6 +204,26 @@ Prefab:
       propertyPath: ground
       value: 
       objectReference: {fileID: 1886684979}
+    - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
+        type: 2}
+      propertyPath: rows
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
+        type: 2}
+      propertyPath: distanceBetweenRows
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
+        type: 2}
+      propertyPath: minGapSize
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
+        type: 2}
+      propertyPath: maxGapSize
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81ad02208885de642983b81536d8b5ec, type: 2}
   m_IsPrefabAsset: 0
