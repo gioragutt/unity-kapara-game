@@ -219,10 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da87c6767257cb40b7a1488602f1c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 10
+  rows: 12
   distanceBetweenRows: 30
-  minGapSize: 3
-  maxGapSize: 5
+  minGapSize: 2.5
+  maxGapSize: 4
   minimumObstacleWidth: 1
   ground: {fileID: 1886684979}
   obstaclePrefab: {fileID: 4882165433687290, guid: 6b3e2fb9a7fc22c45a67990a7d633a3b,
