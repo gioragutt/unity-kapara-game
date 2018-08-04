@@ -24,7 +24,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        RestartGame();
+        var nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        //var nextScene = SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex);
+        //LoadScene(nextScene.name);
+        SceneManager.LoadScene(nextSceneBuildIndex);
     }
 
     public void CompleteLevel()
@@ -48,14 +51,13 @@ public class GameManager : MonoBehaviour
 
     private void RestartGame()
     {
-        var currentSceneName = SceneManager.GetActiveScene().name;
-        Debug.Log("Loading scene: " + currentSceneName);
-        LoadScene(currentSceneName);
+        LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void LoadScene(string currentSceneName)
+    private void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(currentSceneName);
+        Debug.Log("Loading scene: " + sceneName);
+        SceneManager.LoadScene(sceneName);
         obstacles.GenerateObstacles();
         gameHasEnded = false;
     }
