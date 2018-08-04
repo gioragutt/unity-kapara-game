@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private bool gameHasEnded = false;
 
-    public static GameManager GetGameManager()
+    public static GameManager Get()
     {
         return FindObjectOfType<GameManager>();
     }

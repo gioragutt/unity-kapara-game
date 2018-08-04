@@ -9,7 +9,7 @@ public class GameScore : MonoBehaviour
 
     private void Start()
     {
-        GameManager.GetGameManager().GameEnded += OnGameEnded;
+        GameManager.Get().GameEnded += OnGameEnded;
     }
 
     private void OnGameEnded(object sender, System.EventArgs e)

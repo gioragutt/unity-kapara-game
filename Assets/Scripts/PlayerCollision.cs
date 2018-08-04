@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
         if (!collision.collider.CompareTag(Constants.Tags.OBSTACLE))
             return;
 
-        GameManager.GetGameManager().EndGame();
+        GameManager.Get().EndGame();
         movement.StopPlayer();
     }
 }

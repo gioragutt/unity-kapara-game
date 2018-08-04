@@ -11,6 +11,6 @@ public class EndGameTrigger : MonoBehaviour
             return;
 
         other.GetComponent<PlayerMovement>().StopPlayer();
-        GameManager.GetGameManager().CompleteLevel();
+        GameManager.Get().CompleteLevel();
     }
 }

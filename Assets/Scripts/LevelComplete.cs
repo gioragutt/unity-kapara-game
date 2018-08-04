@@ -6,6 +6,6 @@ public class LevelComplete : MonoBehaviour {
 
     public void LoadNextLevel()
     {
-        GameManager.GetGameManager().LoadNextLevel();
+        GameManager.Get().LoadNextLevel();
     }
 }
