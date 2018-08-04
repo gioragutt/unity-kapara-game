@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
 
     #endregion Editor Variables
 
+    #region Implementation Variable
+
     private bool gameHasEnded = false;
+
+    #endregion
 
     public static GameManager Get()
     {
@@ -24,9 +28,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        var nextSceneBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        //var nextScene = SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex);
-        //LoadScene(nextScene.name);
+        var currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        var nextSceneBuildIndex = currentSceneBuildIndex + 1;
+        Debug.LogFormat("Current Scene Index: {0}, Next Scene Index: {1}",
+            currentSceneBuildIndex, nextSceneBuildIndex);
         SceneManager.LoadScene(nextSceneBuildIndex);
     }
 
@@ -49,16 +54,21 @@ public class GameManager : MonoBehaviour
 
     #endregion Public API
 
+    #region Implementation
+
     private void RestartGame()
     {
-        LoadScene(SceneManager.GetActiveScene().name);
+        LoadScene(0);
     }
 
-    private void LoadScene(string sceneName)
+    private void LoadScene(int buildIndex)
     {
-        Debug.Log("Loading scene: " + sceneName);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(buildIndex);
+        var newScene = SceneManager.GetSceneByBuildIndex(buildIndex);
+        Debug.Log("Loaded Scene: " + newScene.name);
         obstacles.GenerateObstacles();
         gameHasEnded = false;
     }
+
+    #endregion Implementation
 }
