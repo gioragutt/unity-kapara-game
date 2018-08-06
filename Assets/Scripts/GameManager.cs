@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     #region Editor Variables
 
+    public string levelName;
     public float restartDelay = 3f;
     public event EventHandler GameEnded;
     public GameObject completeLevelUi;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     #region Implementation Variable
 
-    private bool gameHasEnded = false;
+    public bool GameHasEnded { get; private set; }
 
     #endregion
 
@@ -42,12 +43,12 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        if (gameHasEnded)
+        if (GameHasEnded)
         {
             return;
         }
 
-        gameHasEnded = true;
+        GameHasEnded = true;
         GameEnded.Invoke(null, null);
         Invoke("RestartGame", restartDelay);
     }
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
     private void RestartGame()
     {
         LoadScene(0);
+        GameData.Instance.score = 0;
     }
 
     private void LoadScene(int buildIndex)
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
         var newScene = SceneManager.GetSceneByBuildIndex(buildIndex);
         Debug.Log("Loaded Scene: " + newScene.name);
         obstacles.GenerateObstacles();
-        gameHasEnded = false;
+        GameHasEnded = false;
     }
 
     #endregion Implementation

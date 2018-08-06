@@ -141,5 +141,5 @@ MonoBehaviour:
   forwardForce: 4000
   sidewaysForce: 120
   sidewaysForceMode: 2
-  leftMovementKey: 97
-  rightMovementKey: 100
+  leftMovementKey: 276
+  rightMovementKey: 275

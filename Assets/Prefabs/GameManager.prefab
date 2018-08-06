@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4745105168806534}
   - component: {fileID: 114273507447128088}
+  - component: {fileID: 114944962769470398}
+  - component: {fileID: 114079145521798374}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114079145521798374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104888794665716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a566ccc2e97cbb241ae9ea6661de7a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNameText: {fileID: 0}
 --- !u!114 &114273507447128088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,6 +65,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211328cbbfbed924f8d4e272a26747fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelName: Level 1
   restartDelay: 3
   completeLevelUi: {fileID: 0}
   obstacles: {fileID: 0}
+--- !u!114 &114944962769470398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104888794665716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8794561830aca75429310f8664d3de52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  scoreText: {fileID: 0}
