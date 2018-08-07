@@ -24,10 +24,6 @@ public class GameManager : MonoBehaviour
     {
         var currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
         var nextSceneBuildIndex = currentSceneBuildIndex + 1;
-        Debug.LogFormat(
-            "Current Scene Index: {0}, Next Scene Index: {1}",
-            currentSceneBuildIndex,
-            nextSceneBuildIndex);
         LoadScene(nextSceneBuildIndex);
     }
 
