@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54308422571992968}
   - component: {fileID: 114571727392559820}
   - component: {fileID: 114185008733438894}
+  - component: {fileID: 114924506904717552}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -143,3 +144,19 @@ MonoBehaviour:
   sidewaysForceMode: 2
   leftMovementKey: 276
   rightMovementKey: 275
+--- !u!114 &114924506904717552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666264575136038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783b8f3401e3e5c47897841bcc11ce59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114571727392559820}
+  delay: 3
+  postCountdownText: Get ready...
+  gameStartText: GO!
+  ui: {fileID: 0}
