@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
             "Current Scene Index: {0}, Next Scene Index: {1}",
             currentSceneBuildIndex,
             nextSceneBuildIndex);
-        SceneManager.LoadScene(nextSceneBuildIndex);
+        LoadScene(nextSceneBuildIndex);
     }
 
     public void CompleteLevel()
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         GameHasEnded = true;
         OnGameEnded();
-        Invoke("RestartGame", restartDelay);
+        Invoke("ShowCredits", restartDelay);
     }
 
     public void RestartGame()
@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
             return SceneManager.GetActiveScene().buildIndex ==
                 SceneManager.sceneCountInBuildSettings - 2;
         }
+    }
+
+    private void ShowCredits()
+    {
+        LoadScene(SceneManager.sceneCountInBuildSettings - 1);
     }
 
     private void OnGameEnded()
