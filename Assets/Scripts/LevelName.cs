@@ -5,11 +5,11 @@ public class LevelName : MonoBehaviour
 {
     public Text levelNameText;
 
-    void Update ()
+    void Update()
     {
         if (GameManager.Get().GameHasEnded)
             levelNameText.text = "";
         else
             levelNameText.text = GameManager.Get().levelName;
-	}
+    }
 }

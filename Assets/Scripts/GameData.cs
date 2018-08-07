@@ -2,7 +2,10 @@
 
 public class GameData : MonoBehaviour
 {
-    public static GameData Instance { get; private set; }
+    public static GameData Instance
+    {
+        get; private set;
+    }
 
     public float score;
 

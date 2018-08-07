@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public bool shouldBuildLevel = true;
 
     public event EventHandler GameEnded;
-    public bool GameHasEnded { get; private set; }
+    public bool GameHasEnded
+    {
+        get; private set;
+    }
 
     public static GameManager Get()
     {
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        LoadScene(1);
+        LoadScene(1); // buildIndex 0 = StartMenu
         GameData.Instance.score = 0;
     }
 

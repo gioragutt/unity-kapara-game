@@ -10,8 +10,8 @@ public class Credits : MonoBehaviour
     private void Start()
     {
         scoreText.text = string.Format(
-            "{0}{1}", 
-            scoreTextPrefix, 
+            "{0}{1}",
+            scoreTextPrefix,
             GameData.Instance.score.ToIntegerString());
     }
 
