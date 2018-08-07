@@ -21,8 +21,4 @@ public class ObstaclesGeneratorEditor : Editor
             return (ObstaclesGenerator)target;
         }
     }
-
-    private void RegenerateObstacles()
-    {
-    }
 }

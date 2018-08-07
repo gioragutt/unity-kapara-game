@@ -2,6 +2,7 @@
 
 public class ObstaclesGenerator : MonoBehaviour
 {
+    public int distanceToEndFromLastRow = 10;
     public int rows = 5;
     public float distanceBetweenRows = 18;
     public float minGapSize = 3;
@@ -27,7 +28,7 @@ public class ObstaclesGenerator : MonoBehaviour
 
     private void CreateEndGame()
     {
-        var position = GetInitialPositionForRow(rows - 1) + Vector3.forward * 5;
+        var position = GetInitialPositionForRow(rows - 1) + Vector3.forward * distanceToEndFromLastRow;
         Instantiate(endGamePrefab, position, Quaternion.identity, transform);
     }
 
