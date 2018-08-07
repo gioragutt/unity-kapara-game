@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        LoadScene(0);
+        LoadScene(1);
         GameData.Instance.score = 0;
     }
 
