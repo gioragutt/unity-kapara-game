@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        if (!IsLastLevel)
-            completeLevelUi.SetActive(true);
+        if (IsLastLevel)
+            Invoke("ShowCredits", endOfGameDelay);
         else
-            Invoke("LoadNextLevel", endOfGameDelay);
+            completeLevelUi.SetActive(true);
     }
 
     public void EndGame()
