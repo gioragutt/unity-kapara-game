@@ -4,40 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    #region Editor Variables
-
     public string levelName;
     public float restartDelay = 3f;
     public float endOfGameDelay = 3f;
-    public event EventHandler GameEnded;
     public GameObject completeLevelUi;
-    public ObstaclesGenerator obstacles;
     public bool shouldBuildLevel = true;
 
-    #endregion Editor Variables
-
-    #region Implementation Variable
-
-    public bool GameHasEnded
-    {
-        get; private set;
-    }
-
-    #endregion
+    public event EventHandler GameEnded;
+    public bool GameHasEnded { get; private set; }
 
     public static GameManager Get()
     {
         return FindObjectOfType<GameManager>();
     }
-
-    #region Unity Lifecycle
-
-    private void Start()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    #endregion Unity Lifecycle
 
     #region Public API
 
@@ -45,8 +24,10 @@ public class GameManager : MonoBehaviour
     {
         var currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
         var nextSceneBuildIndex = currentSceneBuildIndex + 1;
-        Debug.LogFormat("Current Scene Index: {0}, Next Scene Index: {1}",
-            currentSceneBuildIndex, nextSceneBuildIndex);
+        Debug.LogFormat(
+            "Current Scene Index: {0}, Next Scene Index: {1}",
+            currentSceneBuildIndex,
+            nextSceneBuildIndex);
         SceneManager.LoadScene(nextSceneBuildIndex);
     }
 
@@ -86,12 +67,6 @@ public class GameManager : MonoBehaviour
         var newScene = SceneManager.GetSceneByBuildIndex(buildIndex);
         Debug.Log("Loaded Scene: " + newScene.name);
         GameHasEnded = false;
-    }
-
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        if (shouldBuildLevel)
-            obstacles.GenerateObstacles();
     }
 
     private bool IsLastLevel
