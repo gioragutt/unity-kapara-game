@@ -41,7 +41,10 @@ public class ObstaclesGenerator : MonoBehaviour
     private void RemoveObstacles()
     {
         foreach (Transform child in transform)
-            Destroy(child.gameObject);
+        {
+            if (child.gameObject != null)
+                Destroy(child.gameObject);
+        }
     }
 
     private Vector3 GetInitialPositionForRow(int row)
