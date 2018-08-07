@@ -494,6 +494,11 @@ Prefab:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 344718288}
+    - target: {fileID: 114273507447128088, guid: 585adb73984fd384f921abdb528784dd,
+        type: 2}
+      propertyPath: levelName
+      value: Level 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 585adb73984fd384f921abdb528784dd, type: 2}
   m_IsPrefabAsset: 0

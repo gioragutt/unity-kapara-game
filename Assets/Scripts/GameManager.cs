@@ -8,15 +8,20 @@ public class GameManager : MonoBehaviour
 
     public string levelName;
     public float restartDelay = 3f;
+    public float endOfGameDelay = 3f;
     public event EventHandler GameEnded;
     public GameObject completeLevelUi;
     public ObstaclesGenerator obstacles;
+    public bool shouldBuildLevel = true;
 
     #endregion Editor Variables
 
     #region Implementation Variable
 
-    public bool GameHasEnded { get; private set; }
+    public bool GameHasEnded
+    {
+        get; private set;
+    }
 
     #endregion
 
@@ -24,6 +29,15 @@ public class GameManager : MonoBehaviour
     {
         return FindObjectOfType<GameManager>();
     }
+
+    #region Unity Lifecycle
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    #endregion Unity Lifecycle
 
     #region Public API
 
@@ -38,7 +52,10 @@ public class GameManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        completeLevelUi.SetActive(true);
+        if (!IsLastLevel)
+            completeLevelUi.SetActive(true);
+        else
+            Invoke("LoadNextLevel", endOfGameDelay);
     }
 
     public void EndGame()
@@ -49,27 +66,49 @@ public class GameManager : MonoBehaviour
         }
 
         GameHasEnded = true;
-        GameEnded.Invoke(null, null);
+        OnGameEnded();
         Invoke("RestartGame", restartDelay);
+    }
+
+    public void RestartGame()
+    {
+        LoadScene(0);
+        GameData.Instance.score = 0;
     }
 
     #endregion Public API
 
     #region Implementation
 
-    private void RestartGame()
-    {
-        LoadScene(0);
-        GameData.Instance.score = 0;
-    }
-
     private void LoadScene(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
         var newScene = SceneManager.GetSceneByBuildIndex(buildIndex);
         Debug.Log("Loaded Scene: " + newScene.name);
-        obstacles.GenerateObstacles();
         GameHasEnded = false;
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if (shouldBuildLevel)
+            obstacles.GenerateObstacles();
+    }
+
+    private bool IsLastLevel
+    {
+        get
+        {
+            return SceneManager.GetActiveScene().buildIndex ==
+                SceneManager.sceneCountInBuildSettings - 2;
+        }
+    }
+
+    private void OnGameEnded()
+    {
+        if (GameEnded != null)
+        {
+            GameEnded.Invoke(null, null);
+        }
     }
 
     #endregion Implementation
