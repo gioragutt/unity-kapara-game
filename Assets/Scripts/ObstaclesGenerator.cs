@@ -47,15 +47,24 @@ public class ObstaclesGenerator : MonoBehaviour
 
     private void CreateObstacles()
     {
-        var obstaclesGenerator = new RowsObstaclesStrategy(ground, new RowsObstaclesStrategy.Configuration
-        {
-            distanceBetweenRows = distanceBetweenRows,
-            rows = rows,
-            maxGapSize = maxGapSize,
-            minGapSize = minGapSize,
-            minimumObstacleWidth = minimumObstacleWidth,
-        });
+        //var obstaclesGenerator = new RowsObstaclesStrategy(ground, new RowsObstaclesStrategy.Configuration
+        //{
+        //    distanceBetweenRows = distanceBetweenRows,
+        //    rows = rows,
+        //    maxGapSize = maxGapSize,
+        //    minGapSize = minGapSize,
+        //    minimumObstacleWidth = minimumObstacleWidth,
+        //});
 
+        var obstaclesGenerator = new SnakeCourseObstaclesStrategy(
+            ground,
+            obstaclePrefab,
+            new SnakeCourseObstaclesStrategy.Configuration
+            {
+                distanceBetweenRows = distanceBetweenRows,
+                rows = rows,
+                width = maxGapSize,
+            });
         var obstacles = obstaclesGenerator.Generate(transform.position);
         foreach (var obstacle in obstacles)
             CreateObstacle(obstacle);

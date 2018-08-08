@@ -5,7 +5,6 @@ namespace Assets.Scripts.Obstacles
 {
     public class RowsObstaclesStrategy : IObstaclesGenerationStrategy
     {
-        [System.Serializable]
         public struct Configuration
         {
             public int rows;
