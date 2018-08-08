@@ -102,3 +102,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   offset: {x: 0, y: 1, z: -5}
+  isSmoothFollow: 0
+  smoothFactor: 20
