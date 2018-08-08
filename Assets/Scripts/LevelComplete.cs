@@ -4,6 +4,9 @@ public class LevelComplete : MonoBehaviour
 {
     public void LoadNextLevel()
     {
-        GameManager.Get().LoadNextLevel();
+        if (!GameManager.Get().GameHasEnded)
+        {
+            GameManager.Get().LoadNextLevel();
+        }
     }
 }
