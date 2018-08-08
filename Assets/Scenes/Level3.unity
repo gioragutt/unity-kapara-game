@@ -255,7 +255,7 @@ Prefab:
     - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
         type: 2}
       propertyPath: distanceBetweenRows
-      value: 28
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
         type: 2}
@@ -267,6 +267,11 @@ Prefab:
       propertyPath: maxGapSize
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114473150400889784, guid: 81ad02208885de642983b81536d8b5ec,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1794706186}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81ad02208885de642983b81536d8b5ec, type: 2}
   m_IsPrefabAsset: 0

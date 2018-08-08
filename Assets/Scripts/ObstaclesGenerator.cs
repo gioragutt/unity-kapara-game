@@ -10,11 +10,13 @@ public class ObstaclesGenerator : MonoBehaviour
     public float minimumObstacleWidth = 1;
 
     public Transform ground;
+    public Transform player;
     public Transform obstaclePrefab;
     public Transform endGamePrefab;
 
     void Start()
     {
+        transform.position = player.transform.position + Vector3.forward * distanceBetweenRows;
         GenerateObstacles();
     }
 
