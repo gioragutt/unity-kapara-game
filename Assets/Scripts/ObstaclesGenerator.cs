@@ -23,7 +23,29 @@ public class ObstaclesGenerator : MonoBehaviour
         GenerateObstacles();
     }
 
+    #region Editor Methods
+
+    public void GenerateObstaclesFromEditor()
+    {
+        RemoveObstaclesFromEditor();
+        CreateObstacles();
+    }
+
+    public void RemoveObstaclesFromEditor()
+    {
+        while (transform.childCount > 0)
+            DestroyImmediate(transform.GetChild(0).gameObject);
+    }
+
+    #endregion Editor Methods
+
     public void GenerateObstacles()
+    {
+        RemoveObstacles();
+        CreateObstacles();
+    }
+
+    private void CreateObstacles()
     {
         var obstaclesGenerator = new RowsObstaclesStrategy(ground, new RowsObstaclesStrategy.Configuration
         {
@@ -34,7 +56,6 @@ public class ObstaclesGenerator : MonoBehaviour
             minimumObstacleWidth = minimumObstacleWidth,
         });
 
-        RemoveObstacles();
         var obstacles = obstaclesGenerator.Generate(transform.position);
         foreach (var obstacle in obstacles)
             CreateObstacle(obstacle);
@@ -48,12 +69,6 @@ public class ObstaclesGenerator : MonoBehaviour
         Instantiate(endGamePrefab, position, Quaternion.identity, transform);
     }
 
-    public void RemoveObstaclesFromEditor()
-    {
-        while (transform.childCount > 0)
-            DestroyImmediate(transform.GetChild(0).gameObject);
-    }
-
     private void RemoveObstacles()
     {
         foreach (Transform child in transform)
@@ -62,7 +77,6 @@ public class ObstaclesGenerator : MonoBehaviour
                 Destroy(child.gameObject);
         }
     }
-    
 
     private void CreateObstacle(Obstacle obstacleasd)
     {

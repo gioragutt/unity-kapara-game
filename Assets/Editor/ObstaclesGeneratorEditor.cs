@@ -9,7 +9,7 @@ public class ObstaclesGeneratorEditor : Editor
         DrawDefaultInspector();
 
         if (GUILayout.Button("Regenerate Obstacles"))
-            Script.GenerateObstacles();
+            Script.GenerateObstaclesFromEditor();
         if (GUILayout.Button("Remove Obstacles"))
             Script.RemoveObstaclesFromEditor();
     }
