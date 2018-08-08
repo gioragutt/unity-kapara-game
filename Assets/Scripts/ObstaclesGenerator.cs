@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Obstacles;
+using UnityEngine;
+using System.Linq;
+using Assets.Scripts;
 
 public class ObstaclesGenerator : MonoBehaviour
 {
@@ -22,15 +25,26 @@ public class ObstaclesGenerator : MonoBehaviour
 
     public void GenerateObstacles()
     {
+        var obstaclesGenerator = new RowsObstaclesStrategy(ground, new RowsObstaclesStrategy.Configuration
+        {
+            distanceBetweenRows = distanceBetweenRows,
+            rows = rows,
+            maxGapSize = maxGapSize,
+            minGapSize = minGapSize,
+            minimumObstacleWidth = minimumObstacleWidth,
+        });
+
         RemoveObstacles();
-        for (int i = 0; i < rows; i++)
-            CreateObstacleRow(i);
-        CreateEndGame();
+        var obstacles = obstaclesGenerator.Generate(transform.position);
+        foreach (var obstacle in obstacles)
+            CreateObstacle(obstacle);
+        var lastObstaclePosition = obstacles.Max(o => o.Position.z) * Vector3.forward;
+        CreateEndGame(lastObstaclePosition);
     }
 
-    private void CreateEndGame()
+    private void CreateEndGame(Vector3 lastObstaclePosition)
     {
-        var position = GetInitialPositionForRow(rows - 1) + Vector3.forward * distanceToEndFromLastRow;
+        var position = lastObstaclePosition + Vector3.forward * distanceToEndFromLastRow;
         Instantiate(endGamePrefab, position, Quaternion.identity, transform);
     }
 
@@ -48,67 +62,16 @@ public class ObstaclesGenerator : MonoBehaviour
                 Destroy(child.gameObject);
         }
     }
+    
 
-    private Vector3 GetInitialPositionForRow(int row)
+    private void CreateObstacle(Obstacle obstacleasd)
     {
-        return Vector3.forward * (transform.position.z + distanceBetweenRows * row);
-    }
-
-    private float GapSizeForRow(int row)
-    {
-        return Mathf.Lerp(maxGapSize, minGapSize, row / rows);
-    }
-
-    private void CreateObstacleRow(int row)
-    {
-        var initialPosition = GetInitialPositionForRow(row);
-        var gapSize = GapSizeForRow(row);
-        var gapCenterX = RandomGapCenterX(gapSize);
-        CreateLeftObstacle(row, gapSize, initialPosition, gapCenterX);
-        CreateRightObstacle(row, gapSize, initialPosition, gapCenterX);
-    }
-
-    private float GroundWidth
-    {
-        get
-        {
-            return ground.transform.localScale.x;
-        }
-    }
-
-    private float RandomGapCenterX(float gapSize)
-    {
-        return Random.Range(minimumObstacleWidth, GroundWidth - gapSize - minimumObstacleWidth) +
-            (gapSize / 2) - GroundWidth / 2;
-    }
-
-
-    private void CreateLeftObstacle(int row, float gapSize, Vector3 initialPosition, float gapCenterX)
-    {
-        var gapLeftX = gapCenterX - gapSize / 2;
-        var leftWidth = gapLeftX + GroundWidth / 2;
-        var leftCenter = gapLeftX - leftWidth / 2;
-        CreateObstacle(row, "Left", initialPosition, leftCenter, leftWidth);
-    }
-
-    private void CreateRightObstacle(int row, float gapSize, Vector3 initialPosition, float gapCenterX)
-    {
-        var gapRightX = gapCenterX + gapSize / 2;
-        var rightWidth = GroundWidth / 2 - gapRightX;
-        var rightCenter = gapRightX + rightWidth / 2;
-        CreateObstacle(row, "Right", initialPosition, rightCenter, rightWidth);
-    }
-
-    private void CreateObstacle(int row, string side, Vector3 initialPosition, float centerX, float scaleX)
-    {
-        var position = initialPosition + new Vector3(centerX, 0, 0);
         var obstacle = Instantiate(
             obstaclePrefab,
-            position,
+            obstacleasd.Position,
             Quaternion.identity,
             transform);
 
-        obstacle.localScale = Vector3.Scale(obstacle.localScale, new Vector3(scaleX, 1, 1));
-        obstacle.name = System.String.Format("Row {0}: {1} Obstacle", row, side);
+        obstacle.localScale = Vector3.Scale(obstacle.localScale, new Vector3(obstacleasd.Width, 1, 1));
     }
 }
