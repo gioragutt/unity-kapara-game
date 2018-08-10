@@ -4,11 +4,11 @@
         "config": {
             "distanceBetweenRows": 54,
             "maxGapSize": 4,
-            "minGapSize": 3.2,
+            "minGapSize": 3,
             "minimumObstacleWidth": 1,
-            "rows": 14
+            "rows": 8
         }
-    },
+    },  
     {
         "type": "Snake",
         "config": {
@@ -28,7 +28,7 @@
         "type": "Snake",
         "config": {
             "distanceBetweenRows": 40,
-            "rows": 2,
+            "rows": 3,
             "width": 3.6
         }
     },
@@ -36,7 +36,7 @@
         "type": "Snake",
         "config": {
             "distanceBetweenRows": 50,
-            "rows": 2,
+            "rows": 3,
             "width": 4
         }
     },
