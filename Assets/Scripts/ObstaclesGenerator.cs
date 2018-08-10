@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using Assets.Scripts;
+using System.Collections.Generic;
 
 public class ObstaclesGenerator : MonoBehaviour
 {
@@ -48,26 +49,37 @@ public class ObstaclesGenerator : MonoBehaviour
         CreateEndGame(lastObstaclePosition);
     }
 
-    private Vector3 CreateAllObstacles()
+    private IEnumerable<Obstacle> GenerateObstacles(out Vector3 lastObstaclePosition)
     {
-        var factory = new ObstaclesFactory(ground, player);
-        var obstacleGeneartors = factory.Create(obstaclesDefinition.text);
-        var lastObstaclePosition = transform.position;
-        bool firstGenerator = true;
-        foreach (var generator in obstacleGeneartors)
+        lastObstaclePosition = transform.position;
+        var isFirstGenerator = true;
+
+        var allObstacles = new List<Obstacle>();
+        foreach (var generator in CreateObstacleGenerators())
         {
             var startingPosition = lastObstaclePosition;
-            if (firstGenerator)
-                firstGenerator = false;
+            if (isFirstGenerator)
+                isFirstGenerator = false;
             else
                 startingPosition = startingPosition + Vector3.forward * distanceBetweenObstacleSegments;
 
             var obstacles = generator.Generate(startingPosition);
-            foreach (var obstacle in obstacles)
-                CreateObstacle(obstacle);
+            allObstacles.AddRange(obstacles);
             lastObstaclePosition = obstacles.Max(o => o.Position.z) * Vector3.forward;
         }
+        return allObstacles;
+    }
 
+    private IEnumerable<IObstaclesGenerationStrategy> CreateObstacleGenerators()
+    {
+        return new ObstaclesFactory(ground, player).Create(obstaclesDefinition.text);
+    }
+
+    private Vector3 CreateAllObstacles()
+    {
+        Vector3 lastObstaclePosition;
+        foreach (var obstacle in GenerateObstacles(out lastObstaclePosition))
+            CreateObstacle(obstacle);
         return lastObstaclePosition;
     }
 
