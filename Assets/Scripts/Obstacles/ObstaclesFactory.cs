@@ -31,9 +31,13 @@ namespace Assets.Scripts.Obstacles
 
             switch (type)
             {
+                case ObstacleType.SingleRow:
+                    return new RowsObstaclesStrategy(
+                        ground,
+                        config.ToObject<RowsObstaclesStrategy.SingleRowConfiguration>());
                 case ObstacleType.Rows:
                     return new RowsObstaclesStrategy(
-                        ground, 
+                        ground,
                         config.ToObject<RowsObstaclesStrategy.Configuration>());
                 case ObstacleType.Snake:
                     return new SnakeCourseObstaclesStrategy(

@@ -2,6 +2,7 @@
 {
     public enum ObstacleType
     {
+        SingleRow,
         Rows,
         Snake,
     }

@@ -15,8 +15,27 @@ namespace Assets.Scripts.Obstacles
             public float minimumObstacleWidth;
         }
 
+        [System.Serializable]
+        public class SingleRowConfiguration
+        {
+            public float gapSize;
+            public float minimumObstacleWidth;
+        }
+
         private readonly Transform ground;
         private readonly Configuration config;
+
+        public RowsObstaclesStrategy(Transform ground, SingleRowConfiguration config)
+        : this(ground, new Configuration
+        {
+            rows = 1,
+            distanceBetweenRows = 0,
+            maxGapSize = config.gapSize,
+            minGapSize = config.gapSize,
+            minimumObstacleWidth = config.minimumObstacleWidth,
+        })
+        {
+        }
 
         public RowsObstaclesStrategy(Transform ground, Configuration config)
         {
