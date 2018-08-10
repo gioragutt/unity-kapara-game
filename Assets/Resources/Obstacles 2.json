@@ -18,13 +18,10 @@
         }
     },
     {
-        "type": "Rows",
+        "type": "SingleRow",
         "config": {
-            "distanceBetweenRows": 57,
-            "maxGapSize": 2.5,
-            "minGapSize": 2.5,
-            "minimumObstacleWidth": 4,
-            "rows": 1
+            "gapSize": 2.5,
+            "minimumObstacleWidth": 4
         }
     },
     {
