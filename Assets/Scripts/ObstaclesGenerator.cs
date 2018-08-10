@@ -6,20 +6,17 @@ using Assets.Scripts;
 public class ObstaclesGenerator : MonoBehaviour
 {
     public int distanceToEndFromLastRow = 10;
-    public int rows = 5;
-    public float distanceBetweenRows = 18;
-    public float minGapSize = 3;
-    public float maxGapSize = 5;
-    public float minimumObstacleWidth = 1;
+    public float distanceBetweenObstacleSegments = 60;
 
     public Transform ground;
     public Transform player;
     public Transform obstaclePrefab;
     public Transform endGamePrefab;
+    public TextAsset obstaclesDefinition;
 
     void Start()
     {
-        transform.position = player.transform.position + Vector3.forward * distanceBetweenRows;
+        transform.position = player.transform.position + Vector3.forward * distanceBetweenObstacleSegments;
         GenerateObstacles();
     }
 
@@ -47,29 +44,31 @@ public class ObstaclesGenerator : MonoBehaviour
 
     private void CreateObstacles()
     {
-        //var obstaclesGenerator = new RowsObstaclesStrategy(ground, new RowsObstaclesStrategy.Configuration
-        //{
-        //    distanceBetweenRows = distanceBetweenRows,
-        //    rows = rows,
-        //    maxGapSize = maxGapSize,
-        //    minGapSize = minGapSize,
-        //    minimumObstacleWidth = minimumObstacleWidth,
-        //});
-
-        var obstaclesGenerator = new SnakeCourseObstaclesStrategy(
-            ground,
-            obstaclePrefab,
-            new SnakeCourseObstaclesStrategy.Configuration
-            {
-                distanceBetweenRows = distanceBetweenRows,
-                rows = rows,
-                width = maxGapSize,
-            });
-        var obstacles = obstaclesGenerator.Generate(transform.position);
-        foreach (var obstacle in obstacles)
-            CreateObstacle(obstacle);
-        var lastObstaclePosition = obstacles.Max(o => o.Position.z) * Vector3.forward;
+        var lastObstaclePosition = CreateAllObstacles();
         CreateEndGame(lastObstaclePosition);
+    }
+
+    private Vector3 CreateAllObstacles()
+    {
+        var factory = new ObstaclesFactory(ground, player);
+        var obstacleGeneartors = factory.Create(obstaclesDefinition.text);
+        var lastObstaclePosition = transform.position;
+        bool firstGenerator = true;
+        foreach (var generator in obstacleGeneartors)
+        {
+            var startingPosition = lastObstaclePosition;
+            if (firstGenerator)
+                firstGenerator = false;
+            else
+                startingPosition = startingPosition + Vector3.forward * distanceBetweenObstacleSegments;
+
+            var obstacles = generator.Generate(startingPosition);
+            foreach (var obstacle in obstacles)
+                CreateObstacle(obstacle);
+            lastObstaclePosition = obstacles.Max(o => o.Position.z) * Vector3.forward;
+        }
+
+        return lastObstaclePosition;
     }
 
     private void CreateEndGame(Vector3 lastObstaclePosition)

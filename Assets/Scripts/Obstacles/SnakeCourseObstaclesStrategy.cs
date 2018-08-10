@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Obstacles
 {
     public class SnakeCourseObstaclesStrategy : IObstaclesGenerationStrategy
     {
-        public struct Configuration
+        [System.Serializable]
+        public class Configuration
         {
             public int rows;
             public float width;

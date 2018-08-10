@@ -5,7 +5,8 @@ namespace Assets.Scripts.Obstacles
 {
     public class RowsObstaclesStrategy : IObstaclesGenerationStrategy
     {
-        public struct Configuration
+        [System.Serializable]
+        public class Configuration
         {
             public int rows;
             public float distanceBetweenRows;

@@ -52,14 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToEndFromLastRow: 10
-  rows: 10
-  distanceBetweenRows: 60
-  minGapSize: 3
-  maxGapSize: 5
-  minimumObstacleWidth: 1
+  distanceBetweenObstacleSegments: 60
   ground: {fileID: 0}
   player: {fileID: 0}
   obstaclePrefab: {fileID: 4882165433687290, guid: 6b3e2fb9a7fc22c45a67990a7d633a3b,
     type: 2}
   endGamePrefab: {fileID: 4212760194502660, guid: 0c21bb27464ba3148b68abe0c6ba48b9,
     type: 2}
+  obstaclesDefinition: {fileID: 4900000, guid: ff27ec5cc4c1cb146aef1b29026c7d7f, type: 3}

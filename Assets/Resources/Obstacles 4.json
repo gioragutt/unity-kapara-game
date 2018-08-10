@@ -1,0 +1,12 @@
+[
+    {
+        "type": "Rows",
+        "config": {
+            "distanceBetweenRows": 41,
+            "maxGapSize": 3.2,
+            "minGapSize": 1.9,
+            "minimumObstacleWidth": 1,
+            "rows": 16
+        }
+    }
+]
