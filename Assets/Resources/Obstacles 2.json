@@ -4,9 +4,45 @@
         "config": {
             "distanceBetweenRows": 57,
             "maxGapSize": 4.5,
-            "minGapSize": 2.7,
+            "minGapSize": 3.6,
             "minimumObstacleWidth": 1,
-            "rows": 12
+            "rows": 6
+        }
+    },
+    {
+        "type": "Snake",
+        "config": {
+            "distanceBetweenRows": 50,
+            "rows": 3,
+            "width": 5
+        }
+    },
+    {
+        "type": "Rows",
+        "config": {
+            "distanceBetweenRows": 57,
+            "maxGapSize": 2.5,
+            "minGapSize": 2.5,
+            "minimumObstacleWidth": 4,
+            "rows": 1
+        }
+    },
+    {
+        "type": "Snake",
+        "config": {
+            "distanceBetweenRows": 50,
+            "rows": 3,
+            "width": 4
+        }
+    },
+    {
+        "type": "Rows",
+        "config": {
+            "distanceBetweenRows": 55,
+            "maxGapSize": 3.5,
+            "minGapSize": 2.4,
+            "minimumObstacleWidth": 1,
+            "rows": 4
         }
     }
 ]
