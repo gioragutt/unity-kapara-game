@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public const int FirstLevelBuildIndex = 1;
+
     public string levelName;
     public float restartDelay = 3f;
     public float endOfGameDelay = 3f;
@@ -23,11 +25,18 @@ public class GameManager : MonoBehaviour
 
     #region Public API
 
+    public void RestartAtCheckpoint()
+    {
+        GameData.Instance.score = GameData.Instance.scoreAtCheckpoint;
+        LoadScene(GameData.Instance.checkpointBuildIndex);
+    }
+
     public void LoadNextLevel()
     {
         var currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
         var nextSceneBuildIndex = currentSceneBuildIndex + 1;
         LoadScene(nextSceneBuildIndex);
+        SaveCheckpoint(nextSceneBuildIndex);
     }
 
     public void CompleteLevel()
@@ -52,13 +61,21 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        LoadScene(1); // buildIndex 0 = StartMenu
+        LoadScene(FirstLevelBuildIndex);
+        GameData.Instance.checkpointBuildIndex = FirstLevelBuildIndex;
+        GameData.Instance.scoreAtCheckpoint = 0;
         GameData.Instance.score = 0;
     }
 
     #endregion Public API
 
     #region Implementation
+
+    private void SaveCheckpoint(int nextSceneBuildIndex)
+    {
+        GameData.Instance.scoreAtCheckpoint = GameData.Instance.score;
+        GameData.Instance.checkpointBuildIndex = nextSceneBuildIndex;
+    }
 
     private void LoadScene(int buildIndex)
     {

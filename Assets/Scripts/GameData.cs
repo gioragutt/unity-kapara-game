@@ -2,12 +2,22 @@
 
 public class GameData : MonoBehaviour
 {
+    public float score;
+    public float scoreAtCheckpoint;
+    public int checkpointBuildIndex = -1;
+
+    private void Start()
+    {
+        if (checkpointBuildIndex < 0)
+            checkpointBuildIndex = GameManager.FirstLevelBuildIndex;
+    }
+
+    #region Implementation
+
     public static GameData Instance
     {
         get; private set;
     }
-
-    public float score;
 
     private void Awake()
     {
@@ -21,4 +31,6 @@ public class GameData : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    #endregion Implementation
 }

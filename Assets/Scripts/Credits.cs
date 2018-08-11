@@ -15,6 +15,11 @@ public class Credits : MonoBehaviour
             GameData.Instance.score.ToIntegerString());
     }
 
+    public void RestartAtCheckpoint()
+    {
+        GameManager.Get().RestartAtCheckpoint();
+    }
+
     public void Restart()
     {
         GameManager.Get().RestartGame();

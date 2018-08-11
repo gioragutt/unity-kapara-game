@@ -358,10 +358,19 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114366579391173944, guid: d1a65f83efb88cf418309722da8bb15e,
+    - target: {fileID: 1731698305289278, guid: d1a65f83efb88cf418309722da8bb15e, type: 2}
+      propertyPath: m_Name
+      value: SavedCheckpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 114773785594030626, guid: d1a65f83efb88cf418309722da8bb15e,
         type: 2}
-      propertyPath: m_Text
-      value: Level 1
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114773785594030626, guid: d1a65f83efb88cf418309722da8bb15e,
+        type: 2}
+      propertyPath: m_FontData.m_RichText
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a65f83efb88cf418309722da8bb15e, type: 2}
