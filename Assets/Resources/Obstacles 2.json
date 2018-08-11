@@ -20,7 +20,7 @@
     {
         "type": "SingleRow",
         "config": {
-            "gapSize": 2.5,
+            "gapSize": 3,
             "minimumObstacleWidth": 4
         }
     },
