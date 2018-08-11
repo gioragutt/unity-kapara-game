@@ -6,11 +6,13 @@ This is a game made following [Brackey's Beginner Tutorial](https://www.youtube.
 * Obstacles are generated every time - no two levels are the same!
 * Simple high score tracker
 * Comfortable keyboard shortcuts
+* Checkpoints for passed levels
 
 ## Keyboard
 * <kbd>Left Arrow</kbd> - Move left
 * <kbd>Right Arrow</kbd> - Move right
-* <kbd>Enter</kbd> - Start/Restart (where possible)
+* <kbd>Enter</kbd> - Start/Restart At Last Checkpoint (where possible)
+* <kbd>Backspace</kbd> - Restart game entirely (where possible)
 * <kbd>Espace</kbd> - Quit (where possible). **To force quit, press <kbd>ALT</kbd>+<kbd>F4</kbd>**
 
 ## Feedback
