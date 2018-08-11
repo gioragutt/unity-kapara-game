@@ -54,10 +54,10 @@
         "type": "Rows",
         "config": {
             "distanceBetweenRows": 41,
-            "maxGapSize": 2.55,
+            "maxGapSize": 2.7,
             "minGapSize": 1.9,
             "minimumObstacleWidth": 1,
-            "rows": 10
+            "rows": 5
         }
     }
 ]
