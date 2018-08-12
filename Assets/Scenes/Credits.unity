@@ -1265,9 +1265,6 @@ MonoBehaviour:
   restartAtCheckpointButtonText: {fileID: 1286850963}
   restartButtonText: {fileID: 1073765659}
   quitButtonText: {fileID: 1569792695}
-  restartAtCheckpointKey: 8
-  restartKey: 13
-  quitKey: 27
 --- !u!224 &2037048907 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224676900862599284, guid: 48d34086c6bd84a4ba844ecd48a7e402,
