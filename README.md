@@ -7,6 +7,7 @@ This is a game made following [Brackey's Beginner Tutorial](https://www.youtube.
 * Simple high score tracker
 * Comfortable keyboard shortcuts
 * Checkpoints for passed levels
+* Awesome sound tracks (since [v0.0.4](https://github.com/gioragutt/unity-kapara-game/releases/tag/v0.0.4))
 
 ## Keyboard
 * <kbd>Left Arrow</kbd> - Move left
