@@ -42,9 +42,13 @@ public class GameManager : MonoBehaviour
     public void CompleteLevel()
     {
         if (IsLastLevel)
+        {
             Invoke("ShowCredits", endOfGameDelay);
+        }
         else
+        {
             completeLevelUi.SetActive(true);
+        }
     }
 
     public void EndGame()
@@ -73,6 +77,11 @@ public class GameManager : MonoBehaviour
 
     private void SaveCheckpoint(int nextSceneBuildIndex)
     {
+        if (GameData.Instance == null)
+        {
+            return;
+        }
+
         GameData.Instance.scoreAtCheckpoint = GameData.Instance.score;
         GameData.Instance.checkpointBuildIndex = nextSceneBuildIndex;
     }
