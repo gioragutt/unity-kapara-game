@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        AudioManager.Instance.FadeOutAllPlayingSource(2f);
         GameHasEnded = true;
         OnGameEnded();
         Invoke("ShowCredits", restartDelay);

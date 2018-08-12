@@ -9,6 +9,9 @@ public class Credits : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.StopAllPlayingSounds();
+        AudioManager.Instance.Play("GameLostSound");
+
         scoreText.text = string.Format(
             "{0}{1}",
             scoreTextPrefix,

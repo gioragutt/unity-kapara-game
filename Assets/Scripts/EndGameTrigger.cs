@@ -8,6 +8,9 @@ public class EndGameTrigger : MonoBehaviour
         if (other.tag != Constants.Tags.PLAYER)
             return;
 
+        AudioManager.Instance.StopAllPlayingSounds();
+        AudioManager.Instance.Play("LevelCompleteSound");
+
         other.GetComponent<PlayerMovement>().StopPlayer();
         GameManager.Get().CompleteLevel();
     }

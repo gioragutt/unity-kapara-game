@@ -17,6 +17,8 @@ public class StartOfGameDelay : MonoBehaviour
 
     IEnumerator Run()
     {
+        AudioManager.Instance.StopAllPlayingSounds();
+        AudioManager.Instance.Play("LevelsMusic");
         player.enabled = false;
 
         for (int i = delay; i > 0; i--)
