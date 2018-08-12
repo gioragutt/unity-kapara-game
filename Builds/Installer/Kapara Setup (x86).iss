@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{93F391E5-2FE2-4E2B-B53C-0D66BEBF76E7}
 AppName=KaparaGame
-AppVersion=0.0.3
+AppVersion=0.0.4
 AppPublisher=Giora Guttsait
 AppPublisherURL=https://www.github.com/gioragutt
 AppSupportURL=https://www.github.com/gioragutt
