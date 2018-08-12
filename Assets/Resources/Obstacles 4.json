@@ -6,7 +6,7 @@
             "maxGapSize": 3.2,
             "minGapSize": 1.9,
             "minimumObstacleWidth": 1,
-            "rows": 10
+            "rows": 6
         }
     },
     {
