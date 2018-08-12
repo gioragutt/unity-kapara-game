@@ -27,7 +27,7 @@ public class GameData : MonoBehaviour
         return currentScene;
     }
 
-    #region Implementation
+    #region Singleton Component Implementation
 
     public static GameData Instance
     {
@@ -47,5 +47,5 @@ public class GameData : MonoBehaviour
         }
     }
 
-    #endregion Implementation
+    #endregion Singleton Component Implementation
 }
