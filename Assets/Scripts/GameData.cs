@@ -19,7 +19,7 @@ public class GameData : MonoBehaviour
     {
         var currentScene = SceneManager.GetActiveScene().buildIndex;
         if (currentScene < GameManager.FirstLevelBuildIndex ||
-            currentScene > SceneManager.sceneCountInBuildSettings - 1)
+            currentScene >= SceneManager.sceneCountInBuildSettings - 1)
         {
             return GameManager.FirstLevelBuildIndex;
         }
