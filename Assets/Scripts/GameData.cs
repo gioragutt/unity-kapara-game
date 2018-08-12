@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
@@ -8,8 +9,22 @@ public class GameData : MonoBehaviour
 
     private void Start()
     {
-        if (checkpointBuildIndex < 0)
-            checkpointBuildIndex = GameManager.FirstLevelBuildIndex;
+        if (checkpointBuildIndex >= 0)
+            return;
+
+        checkpointBuildIndex = GetInitialCheckpointBuildIndex();
+    }
+
+    private int GetInitialCheckpointBuildIndex()
+    {
+        var currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene < GameManager.FirstLevelBuildIndex ||
+            currentScene > SceneManager.sceneCountInBuildSettings - 1)
+        {
+            return GameManager.FirstLevelBuildIndex;
+        }
+
+        return currentScene;
     }
 
     #region Implementation
