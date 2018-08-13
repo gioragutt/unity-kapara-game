@@ -530,11 +530,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114816823375522850, guid: 198087afa8f1fc04f91d87e160aab7e9,
-        type: 2}
-      propertyPath: sounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4251990069763032, guid: 198087afa8f1fc04f91d87e160aab7e9, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -566,26 +561,6 @@ Prefab:
     - target: {fileID: 4251990069763032, guid: 198087afa8f1fc04f91d87e160aab7e9, type: 2}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114816823375522850, guid: 198087afa8f1fc04f91d87e160aab7e9,
-        type: 2}
-      propertyPath: sounds.Array.data[3].name
-      value: GameLostSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 114816823375522850, guid: 198087afa8f1fc04f91d87e160aab7e9,
-        type: 2}
-      propertyPath: sounds.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 91b7da2eb6413a94ba0af60bea34798e, type: 3}
-    - target: {fileID: 114816823375522850, guid: 198087afa8f1fc04f91d87e160aab7e9,
-        type: 2}
-      propertyPath: sounds.Array.data[3].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114816823375522850, guid: 198087afa8f1fc04f91d87e160aab7e9,
-        type: 2}
-      propertyPath: sounds.Array.data[3].pitch
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 198087afa8f1fc04f91d87e160aab7e9, type: 2}
