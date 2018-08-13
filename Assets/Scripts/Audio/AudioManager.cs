@@ -22,21 +22,21 @@ public class AudioManager : MonoBehaviour
 
     public void FadeOutAllPlayingSource(float fadeDuration)
     {
-        foreach (var playingAudio in CurrentlyPlayingSources)
-            StartCoroutine(playingAudio.FadeOut(fadeDuration));
+        foreach (var playingAudio in CurrentlyPlayingSounds)
+            StartCoroutine(playingAudio.source.FadeOut(fadeDuration));
     }
 
     public void StopAllPlayingSounds()
     {
-        foreach (var playingAudio in CurrentlyPlayingSources)
-            playingAudio.Stop();
+        foreach (var playingAudio in CurrentlyPlayingSounds)
+            playingAudio.source.Stop();
     }
 
-    private IEnumerable<AudioSource> CurrentlyPlayingSources
+    private IEnumerable<Sound> CurrentlyPlayingSounds
     {
         get
         {
-            return GetComponents<AudioSource>().Where(s => s.isPlaying);
+            return sounds.Where(s => s.source.isPlaying);
         }
     }
 
