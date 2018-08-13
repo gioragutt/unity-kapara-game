@@ -17,3 +17,7 @@ This is a game made following [Brackey's Beginner Tutorial](https://www.youtube.
 
 ## Feedback
 I appreciate **all** kinds of feedback - you can leave issues or mail me at giora111@gmail.com
+
+## Development
+When cloning the repository, it's necessery to download the following packages via the `Asset Store` -
+* [JSON .NET For Unity](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347)
