@@ -5,8 +5,13 @@ namespace Assets.Scripts.Audio
 {
     public static class AudioUtilities
     {
-        public static IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
+        public static IEnumerator FadeOut(this AudioSource audioSource, float fadeTime)
         {
+            if (audioSource == null)
+            {
+                yield break;
+            }
+
             var startVolume = audioSource.volume;
 
             while (audioSource.volume > 0)

@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     public void FadeOutAllPlayingSource(float fadeDuration)
     {
         foreach (var playingAudio in CurrentlyPlayingSources)
-            StartCoroutine(AudioUtilities.FadeOut(playingAudio, fadeDuration));
+            StartCoroutine(playingAudio.FadeOut(fadeDuration));
     }
 
     public void StopAllPlayingSounds()
