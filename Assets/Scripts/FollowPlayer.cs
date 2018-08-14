@@ -9,6 +9,9 @@ public class FollowPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Get().GameHasEnded)
+            return;
+
         if (isSmoothFollow)
             SmoothFollow();
         else

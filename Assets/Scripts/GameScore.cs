@@ -41,7 +41,7 @@ public class GameScore : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (player.enabled)
+        if (player != null && player.enabled)
         {
             UpdatePlayerScore();
             scoreText.text = GameData.Instance.score.ToIntegerString();
