@@ -5,26 +5,20 @@ public class GameData : MonoBehaviour
 {
     public float score;
     public float scoreAtCheckpoint;
-    public int checkpointBuildIndex = -1;
+    public string checkpointSceneName = string.Empty;
 
     private void Start()
     {
-        if (checkpointBuildIndex >= 0)
+        if (!string.IsNullOrEmpty(checkpointSceneName))
             return;
 
-        checkpointBuildIndex = GetInitialCheckpointBuildIndex();
+        checkpointSceneName = GetInitialCheckpoint();
     }
 
-    private int GetInitialCheckpointBuildIndex()
+    private string GetInitialCheckpoint()
     {
-        var currentScene = SceneManager.GetActiveScene().buildIndex;
-        if (currentScene < GameManager.FirstLevelBuildIndex ||
-            currentScene >= SceneManager.sceneCountInBuildSettings - 1)
-        {
-            return GameManager.FirstLevelBuildIndex;
-        }
-
-        return currentScene;
+        var currentScene = SceneManager.GetActiveScene().name;
+        return currentScene.StartsWith("Level") ? currentScene : GameManager.FirstLevelSceneName;
     }
 
     #region Singleton Component Implementation
