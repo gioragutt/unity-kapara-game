@@ -22,3 +22,4 @@ I appreciate **all** kinds of feedback - you can leave issues or mail me at gior
 ## Development
 When cloning the repository, it's necessery to download the following packages via the `Asset Store` -
 * [JSON .NET For Unity](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347)
+* [Unity Particle Pack](https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-73777)
