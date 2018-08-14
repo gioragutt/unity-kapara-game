@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public const string FirstLevelSceneName = "Level1";
+    private const string CreditsSceneName = "Credits";
 
     public string levelName;
     public float restartDelay = 3f;
@@ -33,15 +35,14 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        var currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        var nextSceneBuildIndex = currentSceneBuildIndex + 1;
+        var nextSceneBuildIndex = NextSceneBuildIndex;
         LoadScene(nextSceneBuildIndex);
         SaveCheckpoint(nextSceneBuildIndex);
     }
 
     public void CompleteLevel()
     {
-        if (IsLastLevel)
+        if (IsLastLevel(NextSceneBuildIndex))
         {
             Invoke("ShowCredits", endOfGameDelay);
         }
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour
         }
 
         GameData.Instance.scoreAtCheckpoint = GameData.Instance.score;
-        GameData.Instance.checkpointSceneName = SceneManager.GetSceneByBuildIndex(nextSceneBuildIndex).name;
+        GameData.Instance.checkpointSceneName = Utilities.NameOfSceneByBuildIndex(nextSceneBuildIndex);
     }
 
     private void LoadScene(string sceneName)
@@ -103,18 +104,22 @@ public class GameManager : MonoBehaviour
         GameHasEnded = false;
     }
 
-    private bool IsLastLevel
+    private bool IsLastLevel(int nextBuildIndex)
+    {
+        return Utilities.NameOfSceneByBuildIndex(nextBuildIndex) == CreditsSceneName;
+    }
+
+    private int NextSceneBuildIndex
     {
         get
         {
-            return SceneManager.GetActiveScene().buildIndex ==
-                SceneManager.sceneCountInBuildSettings - 2;
+            return SceneManager.GetActiveScene().buildIndex + 1;
         }
     }
 
     private void ShowCredits()
     {
-        LoadScene(SceneManager.sceneCountInBuildSettings - 1);
+        LoadScene(CreditsSceneName);
     }
 
     private void OnGameEnded()
