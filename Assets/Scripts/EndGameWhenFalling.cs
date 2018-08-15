@@ -9,7 +9,7 @@ public class EndGameWhenFalling : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameManager.Get().GameHasEnded || player.rigidBody.position.y >= height)
+        if (GameManager.Get().GameHasEnded || !player.enabled || player.rigidBody.position.y >= height)
             return;
 
         Debug.Log("Fell off the platform");
