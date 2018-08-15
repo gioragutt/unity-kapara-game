@@ -5,6 +5,7 @@ public class EndGameWhenFalling : MonoBehaviour
 {
     public PlayerMovement player;
     public float height = -2f;
+    public GameObject explosionEffect;
 
     void FixedUpdate()
     {
@@ -12,8 +13,17 @@ public class EndGameWhenFalling : MonoBehaviour
             return;
 
         Debug.Log("Fell off the platform");
-        player.StopPlayer();
-        Destroy(player.gameObject);
+        DestroyPlayer();
         GameManager.Get().EndGame();
+    }
+
+    private void DestroyPlayer()
+    {
+        player.StopPlayer();
+
+        FindObjectOfType<FollowPlayer>().enabled = false;
+
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
