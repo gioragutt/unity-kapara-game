@@ -1,45 +1,47 @@
-[
-    {
-        "type": "Rows",
-        "config": {
-            "distanceBetweenRows": 57,
-            "maxGapSize": 4.5,
-            "minGapSize": 3.6,
-            "minimumObstacleWidth": 1,
-            "rows": 6
+{
+    "obstacles": [
+        {
+            "type": "Rows",
+            "config": {
+                "distanceBetweenRows": 57,
+                "maxGapSize": 4.5,
+                "minGapSize": 3.6,
+                "minimumObstacleWidth": 1,
+                "rows": 6
+            }
+        },
+        {
+            "type": "Snake",
+            "config": {
+                "distanceBetweenRows": 50,
+                "rows": 3,
+                "width": 5
+            }
+        },
+        {
+            "type": "SingleRow",
+            "config": {
+                "gapSize": 3,
+                "minimumObstacleWidth": 4
+            }
+        },
+        {
+            "type": "Snake",
+            "config": {
+                "distanceBetweenRows": 50,
+                "rows": 3,
+                "width": 4
+            }
+        },
+        {
+            "type": "Rows",
+            "config": {
+                "distanceBetweenRows": 55,
+                "maxGapSize": 3.5,
+                "minGapSize": 2.4,
+                "minimumObstacleWidth": 1,
+                "rows": 4
+            }
         }
-    },
-    {
-        "type": "Snake",
-        "config": {
-            "distanceBetweenRows": 50,
-            "rows": 3,
-            "width": 5
-        }
-    },
-    {
-        "type": "SingleRow",
-        "config": {
-            "gapSize": 3,
-            "minimumObstacleWidth": 4
-        }
-    },
-    {
-        "type": "Snake",
-        "config": {
-            "distanceBetweenRows": 50,
-            "rows": 3,
-            "width": 4
-        }
-    },
-    {
-        "type": "Rows",
-        "config": {
-            "distanceBetweenRows": 55,
-            "maxGapSize": 3.5,
-            "minGapSize": 2.4,
-            "minimumObstacleWidth": 1,
-            "rows": 4
-        }
-    }
-]
+    ]
+}

@@ -20,6 +20,11 @@ namespace Assets.Scripts
             text.text += string.Format(" ({0})", shortcutName);
         }
 
+        public static T ParseToEnum<T>(this string str)
+        {
+            return (T)System.Enum.Parse(typeof(T), str);
+        }
+
         public static string NameOfSceneByBuildIndex(int buildIndex)
         {
             string path = SceneUtility.GetScenePathByBuildIndex(buildIndex);
