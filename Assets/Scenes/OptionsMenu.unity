@@ -888,6 +888,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5df4fb26444754eaabf809292a4ea9, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1203384474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114088347659486014, guid: bb5df4fb26444754eaabf809292a4ea9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1203384473}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1254576146
 Prefab:
   m_ObjectHideFlags: 0
@@ -1193,6 +1199,7 @@ GameObject:
   - component: {fileID: 1933959124}
   - component: {fileID: 1933959123}
   - component: {fileID: 1933959125}
+  - component: {fileID: 1933959126}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -1269,6 +1276,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1903395788}
+--- !u!114 &1933959126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1933959121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c434e03a8ab540043b1592b6d8cc2f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1933959125}
+  resumeButtonText: {fileID: 1203384474}
+  resumeKey: 27
 --- !u!1 &1992073038
 GameObject:
   m_ObjectHideFlags: 0
