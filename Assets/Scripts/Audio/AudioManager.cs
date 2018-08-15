@@ -10,14 +10,17 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        GameOptions.VolumeChanged += (caller, args) =>
+        ChangeVolume(GameOptions.Volume);
+        GameOptions.VolumeChanged += (_, args) => ChangeVolume(args.Volume);
+    }
+
+    private void ChangeVolume(float volume)
+    {
+        foreach (var s in sounds)
         {
-            foreach (var s in sounds)
-            {
-                s.volume = s.originalVolume * args.Volume;
-                s.source.volume = s.volume;
-            }
-        };
+            s.volume = s.originalVolume * volume;
+            s.source.volume = s.volume;
+        }
     }
 
     public void Play(string name)

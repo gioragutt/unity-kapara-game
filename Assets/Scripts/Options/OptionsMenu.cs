@@ -8,12 +8,12 @@ public class OptionsMenu : MonoBehaviour
 
     private void Start()
     {
-        volume.value = GameOptions.Volume;
+        volume.value = GameOptions.Volume * volume.maxValue;
     }
 
     public void ChangeVolume(float value)
     {
-        GameOptions.Volume = value;
+        GameOptions.Volume = value / volume.maxValue;
     }
 
     public void Resume()

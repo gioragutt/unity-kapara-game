@@ -5,18 +5,18 @@ using UnityEngine.UI;
 public class OptionsMenuKeyboardShortcuts : MonoBehaviour
 {
     public OptionsMenu menu;
-    public Text optionsButtonText;
+    public Text resumeButtonText;
 
-    public KeyCode optionsKey = KeyCode.Return;
+    public KeyCode resumeKey = KeyCode.Escape;
 
     private void Start()
     {
-        optionsButtonText.AddKeyboardShortcutText(optionsKey);
+        resumeButtonText.AddKeyboardShortcutText(resumeKey);
     }
 
     private void Update()
     {
-        if (Input.GetKey(optionsKey))
+        if (Input.GetKey(resumeKey))
             menu.Resume();
     }
 }
