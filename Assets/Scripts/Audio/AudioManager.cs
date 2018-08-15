@@ -2,10 +2,23 @@
 using System.Linq;
 using System.Collections.Generic;
 using Assets.Scripts.Audio;
+using Assets.Scripts.Options;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+
+    private void Start()
+    {
+        GameOptions.VolumeChanged += (caller, args) =>
+        {
+            foreach (var s in sounds)
+            {
+                s.volume = s.originalVolume * args.Volume;
+                s.source.volume = s.volume;
+            }
+        };
+    }
 
     public void Play(string name)
     {
@@ -54,6 +67,7 @@ public class AudioManager : MonoBehaviour
         source.pitch = sound.pitch;
         source.loop = sound.loop;
         sound.source = source;
+        sound.originalVolume = sound.volume;
     }
 
     #region Singleton Component Implementation
