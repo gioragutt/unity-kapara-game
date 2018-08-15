@@ -23,6 +23,7 @@ public class EndGameWhenFalling : MonoBehaviour
 
         FindObjectOfType<FollowPlayer>().enabled = false;
 
+        AudioManager.Instance.Play("ExplosionSound");
         Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }

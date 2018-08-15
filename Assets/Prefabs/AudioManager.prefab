@@ -76,3 +76,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: ExplosionSound
+    clip: {fileID: 8300000, guid: 413c9b7c2eba654449d40cb02f258695, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
