@@ -48,6 +48,48 @@ namespace Assets.Scripts.Options
 
         #endregion Volume
 
+        #region Options Menu
+
+        public const string OptionsMenuOpenPerfString = "OptionsMenuOpen";
+        public static bool OptionsMenuOpen
+        {
+            get
+            {
+                return ReturnWithDefault(OptionsMenuOpenPerfString, false);
+            }
+            set
+            {
+                if (value == OptionsMenuOpen)
+                    return;
+
+                SetBool(OptionsMenuOpenPerfString, value);
+                OnOptionsMenuOpenChanged(value);
+            }
+        }
+
+        public class OptionsMenuOpenChangedEventArgs : EventArgs
+        {
+            public bool IsOpen
+            {
+                get; set;
+            }
+        }
+
+        public static event EventHandler<OptionsMenuOpenChangedEventArgs> OptionsMenuOpenChanged;
+
+        private static void OnOptionsMenuOpenChanged(bool isOpen)
+        {
+            if (OptionsMenuOpenChanged != null)
+            {
+                OptionsMenuOpenChanged.Invoke(null, new OptionsMenuOpenChangedEventArgs
+                {
+                    IsOpen = isOpen
+                });
+            }
+        }
+
+        #endregion Options Menu
+
         #region Utilities
 
         private static float Clamp(float min, float max, float value)
@@ -66,6 +108,25 @@ namespace Assets.Scripts.Options
                 PlayerPrefs.SetFloat(key, defaultValue);
             }
             return PlayerPrefs.GetFloat(key);
+        }
+
+        private static bool ReturnWithDefault(string key, bool defaultValue)
+        {
+            if (!PlayerPrefs.HasKey(key))
+            {
+                SetBool(key, defaultValue);
+            }
+            return GetBool(key);
+        }
+
+        private static void SetBool(string key, bool value)
+        {
+            PlayerPrefs.SetInt(key, value ? 1 : 0);
+        }
+
+        private static bool GetBool(string key)
+        {
+            return PlayerPrefs.GetInt(key) != 0;
         }
 
         #endregion

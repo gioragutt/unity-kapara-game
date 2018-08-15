@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Options;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,9 @@ public class StartMenuKeyboardShortcuts : MonoBehaviour
 
     private void Update()
     {
+        if (GameOptions.OptionsMenuOpen)
+            return;
+
         if (Input.GetKey(startKey))
             startMenu.StartGame();
         if (Input.GetKey(optionsKey))
