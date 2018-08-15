@@ -158,16 +158,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1794706186}
-    - target: {fileID: 114010352263737260, guid: 07b5bfe0669ed164fa0c58a96146d1be,
-        type: 2}
-      propertyPath: isSmoothFollow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114010352263737260, guid: 07b5bfe0669ed164fa0c58a96146d1be,
-        type: 2}
-      propertyPath: smoothFactor
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07b5bfe0669ed164fa0c58a96146d1be, type: 2}
   m_IsPrefabAsset: 0
