@@ -12,6 +12,11 @@ public class StartMenu : MonoBehaviour
         GameManager.Get().LoadNextLevel();
     }
 
+    public void OpenOptions()
+    {
+        GameManager.Get().ShowOptionsMenu();
+    }
+
     public void Quit()
     {
         Application.Quit();

@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public const string FirstLevelSceneName = "Level1";
     private const string CreditsSceneName = "Credits";
+    private const string OptionsMenuSceneName = "OptionsMenu";
+
+    private string previousScene;
 
     public string levelName;
     public float restartDelay = 3f;
@@ -26,6 +29,22 @@ public class GameManager : MonoBehaviour
     }
 
     #region Public API
+
+    public void ShowOptionsMenu()
+    {
+        Time.timeScale = 0;
+        //previousScene = SceneManager.GetActiveScene().name;
+        var current = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(OptionsMenuSceneName, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(current);
+    }
+
+    public void ResumeFromOptions()
+    {
+        Time.timeScale = 1f;
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName(previousScene));
+        SceneManager.UnloadSceneAsync(OptionsMenuSceneName);
+    }
 
     public void RestartAtCheckpoint()
     {

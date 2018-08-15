@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Options;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -19,6 +18,6 @@ public class OptionsMenu : MonoBehaviour
 
     public void Resume()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        GameManager.Get().ResumeFromOptions();
     }
 }
