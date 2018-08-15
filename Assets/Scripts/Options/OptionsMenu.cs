@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Options;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -14,5 +15,10 @@ public class OptionsMenu : MonoBehaviour
     public void ChangeVolume(float value)
     {
         GameOptions.Volume = value;
+    }
+
+    public void Resume()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }
 }

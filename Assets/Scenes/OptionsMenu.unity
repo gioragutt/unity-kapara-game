@@ -863,11 +863,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1933959125}
     - target: {fileID: 114162230760921262, guid: bb5df4fb26444754eaabf809292a4ea9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 114162230760921262, guid: bb5df4fb26444754eaabf809292a4ea9,
         type: 2}
@@ -883,7 +883,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1858984243135246, guid: bb5df4fb26444754eaabf809292a4ea9, type: 2}
       propertyPath: m_Name
-      value: StartButtonText
+      value: ResumeButtonText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5df4fb26444754eaabf809292a4ea9, type: 2}
