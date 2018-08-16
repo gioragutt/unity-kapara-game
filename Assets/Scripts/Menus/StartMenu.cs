@@ -12,6 +12,7 @@ public class StartMenu : MonoBehaviour
 
     public void Start()
     {
+        AudioManager.Instance.StopAllPlayingSounds();
         AudioManager.Instance.Play(sound.ToString());
     }
 

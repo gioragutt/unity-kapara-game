@@ -28,8 +28,8 @@ public class Credits : MonoBehaviour
         GameManager.Get().RestartGame();
     }
 
-    public void Quit()
+    public void OpenStartMenu()
     {
-        Application.Quit();
+        GameManager.Get().ShowStartMenu();
     }
 }

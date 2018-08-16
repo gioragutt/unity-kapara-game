@@ -7,17 +7,17 @@ public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
     public Credits credits;
     public Text restartAtCheckpointButtonText;
     public Text restartButtonText;
-    public Text quitButtonText;
+    public Text startMenuButtonText;
 
     public KeyCode restartAtCheckpointKey = KeyCode.Return;
     public KeyCode restartKey = KeyCode.Backspace;
-    public KeyCode quitKey = KeyCode.Escape;
+    public KeyCode startMenuKey = KeyCode.Escape;
 
     private void Start()
     {
         restartAtCheckpointButtonText.AddKeyboardShortcutText(restartAtCheckpointKey);
         restartButtonText.AddKeyboardShortcutText(restartKey);
-        quitButtonText.AddKeyboardShortcutText(quitKey);
+        startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
             credits.RestartAtCheckpoint();
         if (Input.GetKeyDown(restartKey))
             credits.Restart();
-        if (Input.GetKeyDown(quitKey))
-            credits.Quit();
+        if (Input.GetKeyDown(startMenuKey))
+            credits.OpenStartMenu();
     }
 }
