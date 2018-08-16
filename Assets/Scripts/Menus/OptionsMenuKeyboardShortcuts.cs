@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenuKeyboardShortcuts : MonoBehaviour
+public class OptionsMenuKeyboardShortcuts : MenuKeyboardShortcuts
 {
     public OptionsMenu menu;
     public Text resumeButtonText;

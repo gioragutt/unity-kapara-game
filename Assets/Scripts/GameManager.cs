@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public const string FirstLevelSceneName = "Level1";
-    private const string CreditsSceneName = "Credits";
-    private const string OptionsMenuSceneName = "OptionsMenu";
+    public const string CreditsSceneName = "Credits";
+    public const string OptionsMenuSceneName = "OptionsMenu";
+    public const string PauseMenuSceneName = "PauseMenu";
 
     public string levelName;
     public float restartDelay = 3f;
@@ -27,27 +28,31 @@ public class GameManager : MonoBehaviour
         return FindObjectOfType<GameManager>();
     }
 
-    private void Start()
+    #region Public API
+
+    public void ShowStartMenu()
     {
-        GameOptions.OptionsMenuOpen = false;
+        LoadScene(0);
     }
 
-    #region Public API
+    public void ShowPauseMenu()
+    {
+        OpenAdditiveScene(PauseMenuSceneName);
+    }
+
+    public void ResumeFromPauseMenu()
+    {
+        ResumeFromAdditiveScene(PauseMenuSceneName);
+    }
 
     public void ShowOptionsMenu()
     {
-        GameOptions.OptionsMenuOpen = true;
-        Time.timeScale = 0;
-        var current = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(OptionsMenuSceneName, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(current);
+        OpenAdditiveScene(OptionsMenuSceneName);
     }
 
     public void ResumeFromOptions()
     {
-        Time.timeScale = 1f;
-        SceneManager.UnloadSceneAsync(OptionsMenuSceneName);
-        GameOptions.OptionsMenuOpen = false;
+        ResumeFromAdditiveScene(OptionsMenuSceneName);
     }
 
     public void RestartAtCheckpoint()
@@ -99,6 +104,32 @@ public class GameManager : MonoBehaviour
     #endregion Public API
 
     #region Implementation
+
+    private void OpenAdditiveScene(string sceneName)
+    {
+        Time.timeScale = 0;
+        var current = SceneManager.GetActiveScene();
+        ToggleKeyboardShortcuts(current);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(current);
+    }
+
+    private void ToggleKeyboardShortcuts(Scene scene)
+    {
+        foreach (var go in scene.GetRootGameObjects())
+        {
+            Array.ForEach(
+                go.GetComponentsInChildren<MenuKeyboardShortcuts>(),
+                c => c.enabled = !c.enabled);
+        }
+    }
+
+    private void ResumeFromAdditiveScene(string sceneName)
+    {
+        Time.timeScale = 1f;
+        SceneManager.UnloadSceneAsync(sceneName);
+        ToggleKeyboardShortcuts(SceneManager.GetActiveScene());
+    }
 
     private void SaveCheckpoint(int nextSceneBuildIndex)
     {

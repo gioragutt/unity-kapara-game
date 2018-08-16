@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditsKeyboardShortcuts : MonoBehaviour
+public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
 {
     public Credits credits;
     public Text restartAtCheckpointButtonText;

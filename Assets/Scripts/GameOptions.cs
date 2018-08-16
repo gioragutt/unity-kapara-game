@@ -48,48 +48,6 @@ namespace Assets.Scripts.Options
 
         #endregion Volume
 
-        #region Options Menu
-
-        public const string OptionsMenuOpenPerfString = "OptionsMenuOpen";
-        public static bool OptionsMenuOpen
-        {
-            get
-            {
-                return ReturnWithDefault(OptionsMenuOpenPerfString, false);
-            }
-            set
-            {
-                if (value == OptionsMenuOpen)
-                    return;
-
-                SetBool(OptionsMenuOpenPerfString, value);
-                OnOptionsMenuOpenChanged(value);
-            }
-        }
-
-        public class OptionsMenuOpenChangedEventArgs : EventArgs
-        {
-            public bool IsOpen
-            {
-                get; set;
-            }
-        }
-
-        public static event EventHandler<OptionsMenuOpenChangedEventArgs> OptionsMenuOpenChanged;
-
-        private static void OnOptionsMenuOpenChanged(bool isOpen)
-        {
-            if (OptionsMenuOpenChanged != null)
-            {
-                OptionsMenuOpenChanged.Invoke(null, new OptionsMenuOpenChangedEventArgs
-                {
-                    IsOpen = isOpen
-                });
-            }
-        }
-
-        #endregion Options Menu
-
         #region Utilities
 
         private static float Clamp(float min, float max, float value)

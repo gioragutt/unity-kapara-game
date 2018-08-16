@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseMenuKeyboardShortcuts : MonoBehaviour
+public class PauseMenuKeyboardShortcuts : MenuKeyboardShortcuts
 {
     public PauseMenu pauseMenu;
     public Text resumeButtonText;
