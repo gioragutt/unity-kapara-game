@@ -22,11 +22,11 @@ public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
 
     private void Update()
     {
-        if (Input.GetKey(restartAtCheckpointKey))
+        if (Input.GetKeyDown(restartAtCheckpointKey))
             credits.RestartAtCheckpoint();
-        if (Input.GetKey(restartKey))
+        if (Input.GetKeyDown(restartKey))
             credits.Restart();
-        if (Input.GetKey(quitKey))
+        if (Input.GetKeyDown(quitKey))
             credits.Quit();
     }
 }

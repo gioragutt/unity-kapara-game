@@ -16,7 +16,7 @@ public class OptionsMenuKeyboardShortcuts : MenuKeyboardShortcuts
 
     private void Update()
     {
-        if (Input.GetKey(resumeKey))
+        if (Input.GetKeyDown(resumeKey))
             menu.Resume();
     }
 }

@@ -22,11 +22,11 @@ public class StartMenuKeyboardShortcuts : MenuKeyboardShortcuts
 
     private void Update()
     {
-        if (Input.GetKey(startKey))
+        if (Input.GetKeyDown(startKey))
             startMenu.StartGame();
-        if (Input.GetKey(optionsKey))
+        if (Input.GetKeyDown(optionsKey))
             startMenu.OpenOptions();
-        if (Input.GetKey(quitKey))
+        if (Input.GetKeyDown(quitKey))
             startMenu.Quit();
     }
 }

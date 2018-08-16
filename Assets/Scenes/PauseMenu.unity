@@ -136,7 +136,7 @@ AudioListener:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 142965887}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &142965889
 Camera:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1933959126}
     - target: {fileID: 114074028469462698, guid: f0086532ab677ef4592f6f2d45fb30e9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -646,11 +646,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1933959126}
     - target: {fileID: 114162230760921262, guid: bb5df4fb26444754eaabf809292a4ea9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 114162230760921262, guid: bb5df4fb26444754eaabf809292a4ea9,
         type: 2}
@@ -812,7 +812,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1933959126}
     - target: {fileID: 1120102903611598, guid: bb5df4fb26444754eaabf809292a4ea9, type: 2}
       propertyPath: m_Name
       value: StartMenu
@@ -825,6 +825,11 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: START MENU
+      objectReference: {fileID: 0}
+    - target: {fileID: 114162230760921262, guid: bb5df4fb26444754eaabf809292a4ea9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenStartMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5df4fb26444754eaabf809292a4ea9, type: 2}

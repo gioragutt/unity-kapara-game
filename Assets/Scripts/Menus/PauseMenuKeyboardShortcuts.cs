@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,8 @@ public class PauseMenuKeyboardShortcuts : MenuKeyboardShortcuts
     public KeyCode optionsKey = KeyCode.O;
     public KeyCode startMenuKey = KeyCode.M;
 
+    private bool allowResume = true;
+    
     private void Start()
     {
         resumeButtonText.AddKeyboardShortcutText(resumeKey);
@@ -20,13 +23,36 @@ public class PauseMenuKeyboardShortcuts : MenuKeyboardShortcuts
         startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
     }
 
+    private void OnEnable()
+    {
+        Debug.Log("On Pause Menu Enabled");
+        if (Input.GetKey(resumeKey))
+        {
+            allowResume = false;
+        }
+    }
+
     private void Update()
     {
-        if (Input.GetKey(resumeKey))
+        if (!allowResume)
+        {
+            StartCoroutine(WaitForResumeKeyToBeUnpressed());
+        }
+
+        if (allowResume && Input.GetKeyDown(resumeKey))
             pauseMenu.Resume();
-        if (Input.GetKey(optionsKey))
+        if (Input.GetKeyDown(optionsKey))
             pauseMenu.OpenOptions();
-        if (Input.GetKey(startMenuKey))
+        if (Input.GetKeyDown(startMenuKey))
             pauseMenu.OpenStartMenu();
+    }
+
+    private IEnumerator WaitForResumeKeyToBeUnpressed()
+    {
+        while (!Input.GetKeyUp(resumeKey))
+        {
+            yield return null;
+        }
+        allowResume = true;
     }
 }

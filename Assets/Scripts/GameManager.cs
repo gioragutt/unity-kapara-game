@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts;
-using Assets.Scripts.Options;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public float endOfGameDelay = 3f;
     public GameObject completeLevelUi;
     public bool shouldBuildLevel = true;
+
+    private static readonly Stack<string> activeScenes = new Stack<string>();
 
     public event EventHandler GameEnded;
     public bool GameHasEnded
@@ -37,22 +40,22 @@ public class GameManager : MonoBehaviour
 
     public void ShowPauseMenu()
     {
-        OpenAdditiveScene(PauseMenuSceneName);
+        StartCoroutine(OpenAdditiveScene(PauseMenuSceneName));
     }
 
     public void ResumeFromPauseMenu()
     {
-        ResumeFromAdditiveScene(PauseMenuSceneName);
+        CloseAdditiveScene(PauseMenuSceneName);
     }
 
     public void ShowOptionsMenu()
     {
-        OpenAdditiveScene(OptionsMenuSceneName);
+        StartCoroutine(OpenAdditiveScene(OptionsMenuSceneName));
     }
 
     public void ResumeFromOptions()
     {
-        ResumeFromAdditiveScene(OptionsMenuSceneName);
+        CloseAdditiveScene(OptionsMenuSceneName);
     }
 
     public void RestartAtCheckpoint()
@@ -105,13 +108,17 @@ public class GameManager : MonoBehaviour
 
     #region Implementation
 
-    private void OpenAdditiveScene(string sceneName)
+    private IEnumerator OpenAdditiveScene(string sceneName)
     {
+        Debug.LogFormat("OpenAdditiveScene(\"{0}\")", sceneName);
         Time.timeScale = 0;
         var current = SceneManager.GetActiveScene();
         ToggleKeyboardShortcuts(current);
+        activeScenes.Push(current.name);
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(current);
+        yield return null; // wait for scene to load
+        var nextScene = SceneManager.GetSceneByName(sceneName);
+        SceneManager.SetActiveScene(nextScene);
     }
 
     private void ToggleKeyboardShortcuts(Scene scene)
@@ -120,15 +127,40 @@ public class GameManager : MonoBehaviour
         {
             Array.ForEach(
                 go.GetComponentsInChildren<MenuKeyboardShortcuts>(),
-                c => c.enabled = !c.enabled);
+                ToggleComponentEnabled);
         }
     }
 
-    private void ResumeFromAdditiveScene(string sceneName)
+    private static void ToggleComponentEnabled(MonoBehaviour component)
     {
-        Time.timeScale = 1f;
+        var nextValue = !component.enabled;
+        Debug.LogFormat(
+            "Toggling {0} ({1} -> {2})",
+            component.name, 
+            component.enabled, 
+            nextValue);
+        component.enabled = nextValue;
+    }
+
+    private void CloseAdditiveScene(string sceneName)
+    {
+        if (activeScenes.Count == 0)
+        {
+            Debug.LogWarningFormat("CloseAdditiveScene(\"{0}\") called without opening it first", sceneName);
+            return;
+        };
+
+        Debug.LogFormat("CloseAdditiveScene(\"{0}\")", sceneName);
         SceneManager.UnloadSceneAsync(sceneName);
-        ToggleKeyboardShortcuts(SceneManager.GetActiveScene());
+        var previousScene = SceneManager.GetSceneByName(activeScenes.Pop());
+
+        if (activeScenes.Count == 0)
+        {
+            Time.timeScale = 1f;
+        }
+
+        ToggleKeyboardShortcuts(previousScene);
+        SceneManager.SetActiveScene(previousScene);
     }
 
     private void SaveCheckpoint(int nextSceneBuildIndex)
