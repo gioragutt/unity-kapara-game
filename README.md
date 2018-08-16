@@ -8,18 +8,25 @@ This is a game made following [Brackey's Beginner Tutorial](https://www.youtube.
 * Comfortable keyboard shortcuts
 * Checkpoints for passed levels
 * Awesome sound tracks (since [v0.0.4](https://github.com/gioragutt/unity-kapara-game/releases/tag/v0.0.4))
+* **EXPLOSIONS!**
 
 ## Keyboard
 * <kbd>Left Arrow</kbd> - Move left
 * <kbd>Right Arrow</kbd> - Move right
 * <kbd>Enter</kbd> - Start/Restart At Last Checkpoint (where possible)
 * <kbd>Backspace</kbd> - Restart game entirely (where possible)
-* <kbd>Espace</kbd> - Quit (where possible). **To force quit, press <kbd>ALT</kbd>+<kbd>F4</kbd>**
+* <kbd>Espace</kbd> - Pause the game
 
 ## Feedback
-I appreciate **all** kinds of feedback - you can leave issues or mail me at giora111@gmail.com
+I appreciate **all** kinds of feedback
+* Suggestions/Improvements
+  * Go **NUTS** - any idea works!
+* Bug reports
+  * _Reproduction steps are greatly appreciated!_
+
+Please open an issue or mail me at giora111@gmail.com
 
 ## Development
-When cloning the repository, it's necessery to download the following packages via the `Asset Store` -
+After cloning the repository, it's necessery to download the following packages via the `Asset Store` -
 * [JSON .NET For Unity](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347)
 * [Unity Particle Pack](https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-73777)
