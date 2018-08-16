@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class GameScore : MonoBehaviour
 {
-    private const string HighscorePerfsKey = "Highscore";
-
     public PlayerMovement player;
     public Text scoreText;
 
@@ -20,23 +18,11 @@ public class GameScore : MonoBehaviour
     private void OnGameEnded(object sender, System.EventArgs e)
     {
         var score = GameData.Instance.score;
-        var highscore = UpdateHighscore(score);
+        var highscore = GameData.Instance.UpdateHighscore();
         scoreText.text = string.Format(
             "Game Over!\nScore: {0}\nHigh Score: {1}",
             score.ToIntegerString(),
             highscore.ToIntegerString());
-    }
-
-    private static float UpdateHighscore(float score)
-    {
-        var highscore = PlayerPrefs.GetFloat(HighscorePerfsKey, -1);
-        if (score > highscore)
-        {
-            highscore = score;
-            PlayerPrefs.SetFloat(HighscorePerfsKey, highscore);
-        }
-
-        return highscore;
     }
 
     private void FixedUpdate()
