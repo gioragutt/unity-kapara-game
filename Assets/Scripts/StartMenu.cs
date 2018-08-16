@@ -2,9 +2,17 @@
 
 public class StartMenu : MonoBehaviour
 {
+    public enum StartSoundOption
+    {
+        StartMenuSound,
+        LevelsMusic,
+    }
+
+    public StartSoundOption sound = StartSoundOption.StartMenuSound;
+
     public void Start()
     {
-        AudioManager.Instance.Play("StartMenuSound");
+        AudioManager.Instance.Play(sound.ToString());
     }
 
     public void StartGame()
