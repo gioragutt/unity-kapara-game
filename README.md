@@ -1,6 +1,13 @@
 # Kapara
 This is a game made following [Brackey's Beginner Tutorial](https://www.youtube.com/watch?v=j48LtUkZRjU&index=1&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6).
 
+# [Download](https://github.com/gioragutt/unity-kapara-game/releases)
+To download the game, go to the [Releases](https://github.com/gioragutt/unity-kapara-game/releases) page, and download the latest release.  
+The game is available for:
+* Windows (`Karapa.Setup.<version>.x86.exe`)
+* Mac (`Kapara.<version>.Mac.rar`)
+* Linux (`Kapara.<version>.Linux.rar`)
+
 ## Some of the features are:
 * 4 Available Levels - each with increasing difficulty
 * Obstacles are generated every time - no two levels are the same!
