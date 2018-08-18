@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     {
         if (IsLastLevel(NextSceneBuildIndex))
         {
-            GameData.Instance.scoreAtCheckpoint = GameData.Instance.score;
+            GameData.Instance.UpdateHighscore();
             Invoke("ShowCredits", endOfGameDelay);
         }
         else
