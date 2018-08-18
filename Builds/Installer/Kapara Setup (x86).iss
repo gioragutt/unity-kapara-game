@@ -28,7 +28,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 Source: "D:\Repositories\Unity\HowToMakeAVideoGame\Builds\Windows\x86\Kapara.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Repositories\Unity\HowToMakeAVideoGame\Builds\Windows\x86\Kapara_Data\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Repositories\Unity\HowToMakeAVideoGame\Builds\Windows\x86\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
