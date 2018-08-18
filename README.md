@@ -2,11 +2,18 @@
 This is a game made following [Brackey's Beginner Tutorial](https://www.youtube.com/watch?v=j48LtUkZRjU&index=1&list=PLPV2KyIb3jR5QFsefuO2RlAgWEz6EvVi6).
 
 # [Download](https://github.com/gioragutt/unity-kapara-game/releases)
-To download the game, go to the [Releases](https://github.com/gioragutt/unity-kapara-game/releases) page, and download the latest release.  
+To download the game, go to the [Releases](https://github.com/gioragutt/unity-kapara-game/releases) page, and download the latest release.
 The game is available for:
 * Windows (`Karapa.Setup.<version>.x86.exe`)
 * Mac (`Kapara.<version>.Mac.rar`)
 * Linux (`Kapara.<version>.Linux.rar`)
+
+# Screenshots
+
+![Beginning Of Game](https://raw.githubusercontent.com/gioragutt/unity-kapara-game/master/Media/media1.png "Beginning Of Game")
+![Complex Obstacles](https://raw.githubusercontent.com/gioragutt/unity-kapara-game/master/Media/media2.png "Complex Obstacles")
+![Explode when you hit an obstacle](https://raw.githubusercontent.com/gioragutt/unity-kapara-game/master/Media/media3.png "Explode when you hit an obstacle")
+![Credits](https://raw.githubusercontent.com/gioragutt/unity-kapara-game/master/Media/media4.png "Credits")
 
 ## Some of the features are:
 * 4 Available Levels - each with increasing difficulty
