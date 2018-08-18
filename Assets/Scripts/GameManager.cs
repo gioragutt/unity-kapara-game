@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartAtCheckpoint()
     {
-        GameData.Instance.UpdateHighscore();
+        GameData.Instance.score = GameData.Instance.scoreAtCheckpoint;
         LoadScene(GameData.Instance.checkpointSceneName);
     }
 
@@ -100,6 +100,11 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         LoadScene(FirstLevelSceneName);
+        ResetGameData();
+    }
+
+    private static void ResetGameData()
+    {
         GameData.Instance.checkpointSceneName = FirstLevelSceneName;
         GameData.Instance.scoreAtCheckpoint = 0;
         GameData.Instance.score = 0;
