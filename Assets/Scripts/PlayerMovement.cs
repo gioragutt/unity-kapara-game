@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rigidBody.AddForce(0, 0, forwardForce * Time.deltaTime);
-
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
         if (Input.GetKey(leftMovementKey))
         {
             ApplySidewaysForce(-1);
@@ -23,6 +23,30 @@ public class PlayerMovement : MonoBehaviour
         {
             ApplySidewaysForce(1);
         }
+#elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
+        var touchForce = DetectTouchForce();
+        if (touchForce != 0)
+        {
+            ApplySidewaysForce(touchForce);
+        }
+#endif
+    }
+
+    private float DetectTouchForce()
+    {
+        if (Input.touchCount == 0)
+            return 0;
+
+        var screenWidth = Screen.width;
+        var touchForce = 0f;
+        foreach (Touch touch in Input.touches)
+            touchForce += TouchDirection(touch, screenWidth);
+        return System.Math.Sign(touchForce);
+    }
+
+    private static float TouchDirection(Touch touch, int screenWidth)
+    {
+        return touch.position.x <= screenWidth / 2 ? -1 : 1;
     }
 
     private void ApplySidewaysForce(float forceModifier)

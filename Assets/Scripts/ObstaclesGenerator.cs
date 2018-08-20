@@ -1,8 +1,8 @@
-﻿using Assets.Scripts.Obstacles;
-using UnityEngine;
-using System.Linq;
-using Assets.Scripts;
+﻿using Assets.Scripts;
+using Assets.Scripts.Obstacles;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class ObstaclesGenerator : MonoBehaviour
 {

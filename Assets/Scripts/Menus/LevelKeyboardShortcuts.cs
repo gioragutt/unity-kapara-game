@@ -4,9 +4,15 @@ public class LevelKeyboardShortcuts : MenuKeyboardShortcuts
 {
     public KeyCode pauseKey = KeyCode.Escape;
 
-    void Update()
+    protected override void AddShortcuts()
+    {
+    }
+
+    protected override void CheckForShortcutPressed()
     {
         if (Input.GetKeyDown(pauseKey))
+        {
             GameManager.Get().ShowPauseMenu();
+        }
     }
 }

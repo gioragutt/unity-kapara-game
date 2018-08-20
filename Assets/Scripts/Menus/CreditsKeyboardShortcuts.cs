@@ -13,14 +13,14 @@ public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
     public KeyCode restartKey = KeyCode.Backspace;
     public KeyCode startMenuKey = KeyCode.Escape;
 
-    private void Start()
+    protected override void AddShortcuts()
     {
         restartAtCheckpointButtonText.AddKeyboardShortcutText(restartAtCheckpointKey);
         restartButtonText.AddKeyboardShortcutText(restartKey);
         startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
     }
 
-    private void Update()
+    protected override void CheckForShortcutPressed()
     {
         if (Input.GetKeyDown(restartAtCheckpointKey))
             credits.RestartAtCheckpoint();

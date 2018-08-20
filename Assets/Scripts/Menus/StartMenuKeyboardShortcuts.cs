@@ -13,14 +13,14 @@ public class StartMenuKeyboardShortcuts : MenuKeyboardShortcuts
     public KeyCode optionsKey = KeyCode.O;
     public KeyCode quitKey = KeyCode.Escape;
 
-    private void Start()
+    protected override void AddShortcuts()
     {
         startButtonText.AddKeyboardShortcutText(startKey);
         optionsButtonText.AddKeyboardShortcutText(optionsKey);
         quitButtonText.AddKeyboardShortcutText(quitKey);
     }
 
-    private void Update()
+    protected override void CheckForShortcutPressed()
     {
         if (Input.GetKeyDown(startKey))
             startMenu.StartGame();

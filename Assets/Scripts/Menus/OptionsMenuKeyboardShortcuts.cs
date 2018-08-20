@@ -9,14 +9,16 @@ public class OptionsMenuKeyboardShortcuts : MenuKeyboardShortcuts
 
     public KeyCode resumeKey = KeyCode.Escape;
 
-    private void Start()
+    protected override void AddShortcuts()
     {
         resumeButtonText.AddKeyboardShortcutText(resumeKey);
     }
 
-    private void Update()
+    protected override void CheckForShortcutPressed()
     {
         if (Input.GetKeyDown(resumeKey))
+        {
             menu.Resume();
+        }
     }
 }

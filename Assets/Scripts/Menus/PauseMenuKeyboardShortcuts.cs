@@ -15,13 +15,6 @@ public class PauseMenuKeyboardShortcuts : MenuKeyboardShortcuts
     public KeyCode startMenuKey = KeyCode.M;
 
     private bool allowResume = true;
-    
-    private void Start()
-    {
-        resumeButtonText.AddKeyboardShortcutText(resumeKey);
-        optionsButtonText.AddKeyboardShortcutText(optionsKey);
-        startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
-    }
 
     private void OnEnable()
     {
@@ -32,7 +25,14 @@ public class PauseMenuKeyboardShortcuts : MenuKeyboardShortcuts
         }
     }
 
-    private void Update()
+    protected override void AddShortcuts()
+    {
+        resumeButtonText.AddKeyboardShortcutText(resumeKey);
+        optionsButtonText.AddKeyboardShortcutText(optionsKey);
+        startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
+    }
+
+    protected override void CheckForShortcutPressed()
     {
         if (!allowResume)
         {

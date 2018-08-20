@@ -8,6 +8,23 @@ namespace Assets.Scripts
 {
     public static class Utilities
     {
+        public enum PlatformType
+        {
+            Mobile,
+            Standalone,
+        }
+
+        public static readonly PlatformType Platform = GetPlatformType();
+
+        private static PlatformType GetPlatformType()
+        {
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
+            return PlatformType.Standalone;
+#else
+            return PlatformType.Mobile;
+#endif
+        }
+
         public static readonly Dictionary<KeyCode, string> keycodeNameOverrides = new Dictionary<KeyCode, string>
         {
             { KeyCode.Return, "Enter" }
@@ -15,6 +32,11 @@ namespace Assets.Scripts
 
         public static void AddKeyboardShortcutText(this Text text, KeyCode shortcut)
         {
+            if (Platform == PlatformType.Mobile)
+            {
+                return;
+            }
+
             string shortcutName;
             if (!keycodeNameOverrides.TryGetValue(shortcut, out shortcutName))
                 shortcutName = shortcut.ToString();
