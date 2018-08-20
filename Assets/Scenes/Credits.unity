@@ -747,6 +747,11 @@ Prefab:
       propertyPath: m_Text
       value: MAIN MENU
       objectReference: {fileID: 0}
+    - target: {fileID: 114234630070168664, guid: 48d34086c6bd84a4ba844ecd48a7e402,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenStartMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48d34086c6bd84a4ba844ecd48a7e402, type: 2}
   m_IsPrefabAsset: 0
