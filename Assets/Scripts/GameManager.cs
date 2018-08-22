@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowStartMenu()
     {
+        Time.timeScale = 1f;
         LoadScene(0);
     }
 
