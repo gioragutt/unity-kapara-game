@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Menus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -130,11 +131,17 @@ public class GameManager : MonoBehaviour
 
     private void ToggleKeyboardShortcuts(Scene scene)
     {
+        Debug.Log("Toggling keys for scene: \"" + scene.name + "\"");
         foreach (var go in scene.GetRootGameObjects())
         {
-            Array.ForEach(
-                go.GetComponentsInChildren<MenuKeyboardShortcuts>(),
-                ToggleComponentEnabled);
+            var shortcuts = go.GetComponentsInChildren<MenuShortcuts>();
+            if (shortcuts.Length == 0)
+            {
+                continue;
+            }
+
+            Debug.Log("-- GameObject: \"" + go.name + "\"");
+            Array.ForEach(shortcuts, ToggleComponentEnabled);
         }
     }
 

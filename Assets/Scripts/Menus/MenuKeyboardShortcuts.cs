@@ -1,13 +1,13 @@
 ﻿using Assets.Scripts;
-using UnityEngine;
+using Assets.Scripts.Menus;
 
-public abstract class MenuKeyboardShortcuts : MonoBehaviour
+public abstract class MenuKeyboardShortcuts : MenuShortcuts
 {
     private void Start()
     {
         if (Utilities.Platform == Utilities.PlatformType.Mobile)
         {
-            enabled = false;
+            Destroy(this);
             return;
         }
 
