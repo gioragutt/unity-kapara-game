@@ -29,7 +29,7 @@ The game is available for:
 * <kbd>Right Arrow</kbd> - Move right
 * <kbd>Enter</kbd> - Start/Restart At Last Checkpoint (where possible)
 * <kbd>Backspace</kbd> - Restart game entirely (where possible)
-* <kbd>Espace</kbd> - Pause the game
+* <kbd>Escape</kbd> - Pause the game
 
 ## Feedback
 I appreciate **all** kinds of feedback
@@ -41,6 +41,6 @@ I appreciate **all** kinds of feedback
 Please open an issue or mail me at giora111@gmail.com
 
 ## Development
-After cloning the repository, it's necessery to download the following packages via the `Asset Store` -
+After cloning the repository, it's necessary to download the following packages via the `Asset Store` -
 * [JSON .NET For Unity](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347)
 * [Unity Particle Pack](https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-73777)
