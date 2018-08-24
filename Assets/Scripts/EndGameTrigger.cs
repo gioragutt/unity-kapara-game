@@ -1,19 +1,22 @@
-﻿using Assets.Scripts;
+﻿using Assets.Scripts.Audio;
 using UnityEngine;
 
-public class EndGameTrigger : MonoBehaviour
+namespace Assets.Scripts
 {
-    private void OnTriggerEnter(Collider other)
+    public class EndGameTrigger : MonoBehaviour
     {
-        if (other.tag != Constants.Tags.PLAYER)
+        private void OnTriggerEnter(Collider other)
         {
-            return;
+            if (other.tag != Constants.Tags.PLAYER)
+            {
+                return;
+            }
+
+            AudioManager.Instance.StopAllPlayingSounds();
+            AudioManager.Instance.Play("LevelCompleteSound");
+
+            other.GetComponent<PlayerMovement>().StopPlayer();
+            GameManager.Get().CompleteLevel();
         }
-
-        AudioManager.Instance.StopAllPlayingSounds();
-        AudioManager.Instance.Play("LevelCompleteSound");
-
-        other.GetComponent<PlayerMovement>().StopPlayer();
-        GameManager.Get().CompleteLevel();
     }
 }

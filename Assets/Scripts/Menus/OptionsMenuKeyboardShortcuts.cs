@@ -1,25 +1,26 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Menus;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenuKeyboardShortcuts : MenuKeyboardShortcuts
+namespace Assets.Scripts.Menus
 {
-    public OptionsMenu menu;
-    public Text resumeButtonText;
-
-    public KeyCode resumeKey = KeyCode.Escape;
-
-    protected override void AddShortcuts()
+    public class OptionsMenuKeyboardShortcuts : MenuKeyboardShortcuts
     {
-        resumeButtonText.AddKeyboardShortcutText(resumeKey);
-    }
+        public OptionsMenu menu;
+        public Text resumeButtonText;
 
-    protected override void CheckForShortcutPressed()
-    {
-        if (Input.GetKeyDown(resumeKey))
+        public KeyCode resumeKey = KeyCode.Escape;
+
+        protected override void AddShortcuts()
         {
-            menu.Resume();
+            resumeButtonText.AddKeyboardShortcutText(resumeKey);
+        }
+
+        protected override void CheckForShortcutPressed()
+        {
+            if (Input.GetKeyDown(resumeKey))
+            {
+                menu.Resume();
+            }
         }
     }
 }

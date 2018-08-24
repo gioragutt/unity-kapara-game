@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+namespace Assets.Scripts.Menus
 {
-    public void Resume()
+    public class PauseMenu : MonoBehaviour
     {
-        GameManager.Get().ResumeFromPauseMenu();
-    }
+        public void Resume()
+        {
+            GameManager.Get().ResumeFromPauseMenu();
+        }
 
-    public void OpenOptions()
-    {
-        GameManager.Get().ShowOptionsMenu();
-    }
+        public void OpenOptions()
+        {
+            GameManager.Get().ShowOptionsMenu();
+        }
 
-    public void OpenStartMenu()
-    {
-        GameManager.Get().ShowStartMenu();
+        public void OpenStartMenu()
+        {
+            GameManager.Get().ShowStartMenu();
+        }
     }
 }

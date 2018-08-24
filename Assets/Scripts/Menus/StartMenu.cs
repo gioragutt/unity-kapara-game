@@ -1,33 +1,37 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Audio;
+using UnityEngine;
 
-public class StartMenu : MonoBehaviour
+namespace Assets.Scripts.Menus
 {
-    public enum StartSoundOption
+    public class StartMenu : MonoBehaviour
     {
-        StartMenuSound,
-        LevelsMusic,
-    }
+        public enum StartSoundOption
+        {
+            StartMenuSound,
+            LevelsMusic,
+        }
 
-    public StartSoundOption sound = StartSoundOption.StartMenuSound;
+        public StartSoundOption sound = StartSoundOption.StartMenuSound;
 
-    public void Start()
-    {
-        AudioManager.Instance.StopAllPlayingSounds();
-        AudioManager.Instance.Play(sound.ToString());
-    }
+        public void Start()
+        {
+            AudioManager.Instance.StopAllPlayingSounds();
+            AudioManager.Instance.Play(sound.ToString());
+        }
 
-    public void StartGame()
-    {
-        GameManager.Get().LoadNextLevel();
-    }
+        public void StartGame()
+        {
+            GameManager.Get().LoadNextLevel();
+        }
 
-    public void OpenOptions()
-    {
-        GameManager.Get().ShowOptionsMenu();
-    }
+        public void OpenOptions()
+        {
+            GameManager.Get().ShowOptionsMenu();
+        }
 
-    public void Quit()
-    {
-        Application.Quit();
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }

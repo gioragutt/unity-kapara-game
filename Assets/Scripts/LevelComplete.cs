@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class LevelComplete : MonoBehaviour
+namespace Assets.Scripts
 {
-    public void LoadNextLevel()
+    public class LevelComplete : MonoBehaviour
     {
-        if (!GameManager.Get().GameHasEnded)
+        public void LoadNextLevel()
         {
-            GameManager.Get().LoadNextLevel();
+            if (!GameManager.Get().GameHasEnded)
+            {
+                GameManager.Get().LoadNextLevel();
+            }
         }
     }
 }

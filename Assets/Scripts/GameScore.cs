@@ -1,52 +1,54 @@
-﻿using Assets.Scripts;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameScore : MonoBehaviour
+namespace Assets.Scripts
 {
-    public PlayerMovement player;
-    public Text scoreText;
-
-    private float lastPlayerPosition;
-
-    private void Start()
+    public class GameScore : MonoBehaviour
     {
-        GameManager.Get().GameEnded += OnGameEnded;
-        lastPlayerPosition = CurrentPlayerZ;
-    }
+        public PlayerMovement player;
+        public Text scoreText;
 
-    private void OnGameEnded(object sender, System.EventArgs e)
-    {
-        var score = GameData.Instance.score;
-        var highscore = GameData.Instance.UpdateHighscore();
-        scoreText.text = string.Format(
-            "Game Over!\nScore: {0}\nHigh Score: {1}",
-            score.ToIntegerString(),
-            highscore.ToIntegerString());
-    }
+        private float lastPlayerPosition;
 
-    private void FixedUpdate()
-    {
-        if (player != null && player.enabled)
+        private void Start()
         {
-            UpdatePlayerScore();
-            scoreText.text = GameData.Instance.score.ToIntegerString();
+            GameManager.Get().GameEnded += OnGameEnded;
+            lastPlayerPosition = CurrentPlayerZ;
         }
-    }
 
-    private void UpdatePlayerScore()
-    {
-        var distancePassed = CurrentPlayerZ - lastPlayerPosition;
-        if (distancePassed > 0)
-            GameData.Instance.score += distancePassed;
-        lastPlayerPosition = CurrentPlayerZ;
-    }
-
-    private float CurrentPlayerZ
-    {
-        get
+        private void OnGameEnded(object sender, System.EventArgs e)
         {
-            return player.transform.position.z;
+            var score = GameData.Instance.score;
+            var highscore = GameData.Instance.UpdateHighscore();
+            scoreText.text = string.Format(
+                "Game Over!\nScore: {0}\nHigh Score: {1}",
+                score.ToIntegerString(),
+                highscore.ToIntegerString());
+        }
+
+        private void FixedUpdate()
+        {
+            if (player != null && player.enabled)
+            {
+                UpdatePlayerScore();
+                scoreText.text = GameData.Instance.score.ToIntegerString();
+            }
+        }
+
+        private void UpdatePlayerScore()
+        {
+            var distancePassed = CurrentPlayerZ - lastPlayerPosition;
+            GameData.Instance.score += Math.Max(0, distancePassed);
+            lastPlayerPosition = CurrentPlayerZ;
+        }
+
+        private float CurrentPlayerZ
+        {
+            get
+            {
+                return player.transform.position.z;
+            }
         }
     }
 }

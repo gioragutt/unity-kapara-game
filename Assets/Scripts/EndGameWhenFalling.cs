@@ -1,19 +1,22 @@
-﻿
-using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EndGameWhenFalling : MonoBehaviour
+namespace Assets.Scripts
 {
-    public PlayerMovement player;
-    public float height = -2f;
-
-    void FixedUpdate()
+    public class EndGameWhenFalling : MonoBehaviour
     {
-        if (GameManager.Get().GameHasEnded || !player.enabled || player.rigidBody.position.y >= height)
-            return;
+        public PlayerMovement player;
+        public float height = -2f;
 
-        Debug.Log("Fell off the platform");
-        GetComponent<PlayerDeath>().DestroyPlayer();
-        GameManager.Get().EndGame();
+        void FixedUpdate()
+        {
+            if (GameManager.Get().GameHasEnded || !player.enabled || player.rigidBody.position.y >= height)
+            {
+                return;
+            }
+
+            Debug.Log("Fell off the platform");
+            GetComponent<PlayerDeath>().DestroyPlayer();
+            GameManager.Get().EndGame();
+        }
     }
 }

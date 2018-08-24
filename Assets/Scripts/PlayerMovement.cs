@@ -1,28 +1,30 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace Assets.Scripts
 {
-    public Rigidbody rigidBody;
-    public float forwardForce = 4000f;
-    public float sidewaysForce = 120f;
-    public ForceMode sidewaysForceMode = ForceMode.VelocityChange;
-
-    public KeyCode leftMovementKey = KeyCode.A;
-    public KeyCode rightMovementKey = KeyCode.D;
-
-    private void FixedUpdate()
+    public class PlayerMovement : MonoBehaviour
     {
-        rigidBody.AddForce(0, 0, forwardForce * Time.deltaTime);
-#if UNITY_STANDALONE || UNITY_WEBPLAYER
-        if (Input.GetKey(leftMovementKey))
-        {
-            ApplySidewaysForce(-1);
-        }
+        public Rigidbody rigidBody;
+        public float forwardForce = 4000f;
+        public float sidewaysForce = 120f;
+        public ForceMode sidewaysForceMode = ForceMode.VelocityChange;
 
-        if (Input.GetKey(rightMovementKey))
+        public KeyCode leftMovementKey = KeyCode.A;
+        public KeyCode rightMovementKey = KeyCode.D;
+
+        private void FixedUpdate()
         {
-            ApplySidewaysForce(1);
-        }
+            rigidBody.AddForce(0, 0, forwardForce * Time.deltaTime);
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
+            if (Input.GetKey(leftMovementKey))
+            {
+                ApplySidewaysForce(-1);
+            }
+
+            if (Input.GetKey(rightMovementKey))
+            {
+                ApplySidewaysForce(1);
+            }
 #elif UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
         var touchForce = DetectTouchForce();
         if (touchForce != 0)
@@ -30,34 +32,35 @@ public class PlayerMovement : MonoBehaviour
             ApplySidewaysForce(touchForce);
         }
 #endif
-    }
+        }
 
-    private float DetectTouchForce()
-    {
-        if (Input.touchCount == 0)
-            return 0;
+        private float DetectTouchForce()
+        {
+            if (Input.touchCount == 0)
+                return 0;
 
-        var screenWidth = Screen.width;
-        var touchForce = 0f;
-        foreach (Touch touch in Input.touches)
-            touchForce += TouchDirection(touch, screenWidth);
-        return System.Math.Sign(touchForce);
-    }
+            var screenWidth = Screen.width;
+            var touchForce = 0f;
+            foreach (Touch touch in Input.touches)
+                touchForce += TouchDirection(touch, screenWidth);
+            return System.Math.Sign(touchForce);
+        }
 
-    private static float TouchDirection(Touch touch, int screenWidth)
-    {
-        return touch.position.x <= screenWidth / 2 ? -1 : 1;
-    }
+        private static float TouchDirection(Touch touch, int screenWidth)
+        {
+            return touch.position.x <= screenWidth / 2 ? -1 : 1;
+        }
 
-    private void ApplySidewaysForce(float forceModifier)
-    {
-        float force = forceModifier * sidewaysForce * Time.deltaTime;
-        rigidBody.AddForce(force, 0, 0, sidewaysForceMode);
-    }
+        private void ApplySidewaysForce(float forceModifier)
+        {
+            float force = forceModifier * sidewaysForce * Time.deltaTime;
+            rigidBody.AddForce(force, 0, 0, sidewaysForceMode);
+        }
 
-    public void StopPlayer()
-    {
-        enabled = false;
-        rigidBody.AddForce(rigidBody.velocity * -0.5f);
+        public void StopPlayer()
+        {
+            enabled = false;
+            rigidBody.AddForce(rigidBody.velocity * -0.5f);
+        }
     }
 }

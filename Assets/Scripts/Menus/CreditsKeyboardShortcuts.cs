@@ -1,32 +1,34 @@
-﻿using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
+namespace Assets.Scripts.Menus
 {
-    public Credits credits;
-    public Text restartAtCheckpointButtonText;
-    public Text restartButtonText;
-    public Text startMenuButtonText;
-
-    public KeyCode restartAtCheckpointKey = KeyCode.Return;
-    public KeyCode restartKey = KeyCode.Backspace;
-    public KeyCode startMenuKey = KeyCode.Escape;
-
-    protected override void AddShortcuts()
+    public class CreditsKeyboardShortcuts : MenuKeyboardShortcuts
     {
-        restartAtCheckpointButtonText.AddKeyboardShortcutText(restartAtCheckpointKey);
-        restartButtonText.AddKeyboardShortcutText(restartKey);
-        startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
-    }
+        public Credits credits;
+        public Text restartAtCheckpointButtonText;
+        public Text restartButtonText;
+        public Text startMenuButtonText;
 
-    protected override void CheckForShortcutPressed()
-    {
-        if (Input.GetKeyDown(restartAtCheckpointKey))
-            credits.RestartAtCheckpoint();
-        if (Input.GetKeyDown(restartKey))
-            credits.Restart();
-        if (Input.GetKeyDown(startMenuKey))
-            credits.OpenStartMenu();
+        public KeyCode restartAtCheckpointKey = KeyCode.Return;
+        public KeyCode restartKey = KeyCode.Backspace;
+        public KeyCode startMenuKey = KeyCode.Escape;
+
+        protected override void AddShortcuts()
+        {
+            restartAtCheckpointButtonText.AddKeyboardShortcutText(restartAtCheckpointKey);
+            restartButtonText.AddKeyboardShortcutText(restartKey);
+            startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
+        }
+
+        protected override void CheckForShortcutPressed()
+        {
+            if (Input.GetKeyDown(restartAtCheckpointKey))
+                credits.RestartAtCheckpoint();
+            if (Input.GetKeyDown(restartKey))
+                credits.Restart();
+            if (Input.GetKeyDown(startMenuKey))
+                credits.OpenStartMenu();
+        }
     }
 }

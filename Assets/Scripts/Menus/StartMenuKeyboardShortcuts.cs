@@ -1,32 +1,34 @@
-﻿using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class StartMenuKeyboardShortcuts : MenuKeyboardShortcuts
+namespace Assets.Scripts.Menus
 {
-    public StartMenu startMenu;
-    public Text startButtonText;
-    public Text optionsButtonText;
-    public Text quitButtonText;
-
-    public KeyCode startKey = KeyCode.Return;
-    public KeyCode optionsKey = KeyCode.O;
-    public KeyCode quitKey = KeyCode.Escape;
-
-    protected override void AddShortcuts()
+    public class StartMenuKeyboardShortcuts : MenuKeyboardShortcuts
     {
-        startButtonText.AddKeyboardShortcutText(startKey);
-        optionsButtonText.AddKeyboardShortcutText(optionsKey);
-        quitButtonText.AddKeyboardShortcutText(quitKey);
-    }
+        public StartMenu startMenu;
+        public Text startButtonText;
+        public Text optionsButtonText;
+        public Text quitButtonText;
 
-    protected override void CheckForShortcutPressed()
-    {
-        if (Input.GetKeyDown(startKey))
-            startMenu.StartGame();
-        if (Input.GetKeyDown(optionsKey))
-            startMenu.OpenOptions();
-        if (Input.GetKeyDown(quitKey))
-            startMenu.Quit();
+        public KeyCode startKey = KeyCode.Return;
+        public KeyCode optionsKey = KeyCode.O;
+        public KeyCode quitKey = KeyCode.Escape;
+
+        protected override void AddShortcuts()
+        {
+            startButtonText.AddKeyboardShortcutText(startKey);
+            optionsButtonText.AddKeyboardShortcutText(optionsKey);
+            quitButtonText.AddKeyboardShortcutText(quitKey);
+        }
+
+        protected override void CheckForShortcutPressed()
+        {
+            if (Input.GetKeyDown(startKey))
+                startMenu.StartGame();
+            if (Input.GetKeyDown(optionsKey))
+                startMenu.OpenOptions();
+            if (Input.GetKeyDown(quitKey))
+                startMenu.Quit();
+        }
     }
 }

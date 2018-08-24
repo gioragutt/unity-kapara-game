@@ -1,99 +1,100 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
-using Assets.Scripts.Audio;
-using Assets.Scripts;
+using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace Assets.Scripts.Audio
 {
-    public Sound[] sounds;
-
-    private void Start()
+    public class AudioManager : MonoBehaviour
     {
-        ChangeVolume(GameOptions.Volume);
-        GameOptions.VolumeChanged += (_, args) => ChangeVolume(args.Volume);
-    }
+        public Sound[] sounds;
 
-    private void ChangeVolume(float volume)
-    {
-        foreach (var s in sounds)
+        private void Start()
         {
-            s.volume = s.originalVolume * volume;
-            s.source.volume = s.volume;
+            ChangeVolume(GameOptions.Volume);
+            GameOptions.VolumeChanged += (_, args) => ChangeVolume(args.Volume);
         }
-    }
 
-    public void Play(string name)
-    {
-        var requested = sounds.FirstOrDefault(s => s.name == name);
-        if (requested != null)
+        private void ChangeVolume(float volume)
         {
-            requested.source.Play();
+            foreach (var s in sounds)
+            {
+                s.volume = s.originalVolume * volume;
+                s.source.volume = s.volume;
+            }
         }
-        else
+
+        public void Play(string name)
         {
-            Debug.LogWarningFormat("Sound \"{0}\" not found", name);
+            var requested = sounds.FirstOrDefault(s => s.name == name);
+            if (requested != null)
+            {
+                requested.source.Play();
+            }
+            else
+            {
+                Debug.LogWarningFormat("Sound \"{0}\" not found", name);
+            }
         }
-	}
 
-    public void FadeOutAllPlayingSource(float fadeDuration)
-    {
-        foreach (var playingAudio in CurrentlyPlayingSounds)
-            StartCoroutine(playingAudio.source.FadeOut(fadeDuration));
-    }
-
-    public void StopAllPlayingSounds()
-    {
-        foreach (var playingAudio in CurrentlyPlayingSounds)
-            playingAudio.source.Stop();
-    }
-
-    private IEnumerable<Sound> CurrentlyPlayingSounds
-    {
-        get
+        public void FadeOutAllPlayingSource(float fadeDuration)
         {
-            return sounds.Where(s => s.source.isPlaying);
+            foreach (var playingAudio in CurrentlyPlayingSounds)
+                StartCoroutine(playingAudio.source.FadeOut(fadeDuration));
         }
-    }
 
-    private void AddSounds()
-    {
-        foreach (var sound in sounds)
-            AddSound(sound);
-    }
-
-    private void AddSound(Sound sound)
-    {
-        var source = gameObject.AddComponent<AudioSource>();
-        source.clip = sound.clip;
-        source.volume = sound.volume;
-        source.pitch = sound.pitch;
-        source.loop = sound.loop;
-        sound.source = source;
-        sound.originalVolume = sound.volume;
-    }
-
-    #region Singleton Component Implementation
-
-    public static AudioManager Instance
-    {
-        get; private set;
-    }
-
-    private void Awake()
-    {
-        if (Instance == null)
+        public void StopAllPlayingSounds()
         {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-
-            AddSounds();
+            foreach (var playingAudio in CurrentlyPlayingSounds)
+                playingAudio.source.Stop();
         }
-        else
+
+        private IEnumerable<Sound> CurrentlyPlayingSounds
         {
-            Destroy(gameObject);
+            get
+            {
+                return sounds.Where(s => s.source.isPlaying);
+            }
         }
-    }
 
-    #endregion Singleton Component Implementation
+        private void AddSounds()
+        {
+            foreach (var sound in sounds)
+                AddSound(sound);
+        }
+
+        private void AddSound(Sound sound)
+        {
+            var source = gameObject.AddComponent<AudioSource>();
+            source.clip = sound.clip;
+            source.volume = sound.volume;
+            source.pitch = sound.pitch;
+            source.loop = sound.loop;
+            sound.source = source;
+            sound.originalVolume = sound.volume;
+        }
+
+        #region Singleton Component Implementation
+
+        public static AudioManager Instance
+        {
+            get; private set;
+        }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                DontDestroyOnLoad(gameObject);
+                Instance = this;
+
+                AddSounds();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        #endregion Singleton Component Implementation
+    }
 }

@@ -1,24 +1,24 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Menus;
-
-public abstract class MenuKeyboardShortcuts : MenuShortcuts
+﻿namespace Assets.Scripts.Menus
 {
-    private void Start()
+    public abstract class MenuKeyboardShortcuts : MenuShortcuts
     {
-        if (Utilities.Platform == Utilities.PlatformType.Mobile)
+        private void Start()
         {
-            Destroy(this);
-            return;
+            if (Utilities.Platform == Utilities.PlatformType.Mobile)
+            {
+                Destroy(this);
+                return;
+            }
+
+            AddShortcuts();
         }
 
-        AddShortcuts();
-    }
+        private void Update()
+        {
+            CheckForShortcutPressed();
+        }
 
-    private void Update()
-    {
-        CheckForShortcutPressed();
+        protected abstract void AddShortcuts();
+        protected abstract void CheckForShortcutPressed();
     }
-
-    protected abstract void AddShortcuts();
-    protected abstract void CheckForShortcutPressed();
 }

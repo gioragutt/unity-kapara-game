@@ -1,38 +1,42 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Audio;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartOfGameDelay : MonoBehaviour
+namespace Assets.Scripts
 {
-    public PlayerMovement player;
-    public int delay = 3;
-    public string postCountdownText = "Get ready...";
-    public string gameStartText = "GO!";
-    public Text ui;
-
-    void Start()
+    public class StartOfGameDelay : MonoBehaviour
     {
-        StartCoroutine("Run");
-    }
+        public PlayerMovement player;
+        public int delay = 3;
+        public string postCountdownText = "Get ready...";
+        public string gameStartText = "GO!";
+        public Text ui;
 
-    IEnumerator Run()
-    {
-        AudioManager.Instance.StopAllPlayingSounds();
-        AudioManager.Instance.Play("LevelsMusic");
-        player.enabled = false;
-
-        for (int i = delay; i > 0; i--)
+        void Start()
         {
-            ui.text = string.Format("{0}...", i);
-            yield return new WaitForSeconds(1f);
+            StartCoroutine("Run");
         }
 
-        ui.text = postCountdownText;
-        yield return new WaitForSeconds(1f);
+        IEnumerator Run()
+        {
+            AudioManager.Instance.StopAllPlayingSounds();
+            AudioManager.Instance.Play("LevelsMusic");
+            player.enabled = false;
 
-        ui.text = gameStartText;
-        yield return new WaitForSeconds(1f);
+            for (int i = delay; i > 0; i--)
+            {
+                ui.text = string.Format("{0}...", i);
+                yield return new WaitForSeconds(1f);
+            }
 
-        player.enabled = true;
+            ui.text = postCountdownText;
+            yield return new WaitForSeconds(1f);
+
+            ui.text = gameStartText;
+            yield return new WaitForSeconds(1f);
+
+            player.enabled = true;
+        }
     }
 }

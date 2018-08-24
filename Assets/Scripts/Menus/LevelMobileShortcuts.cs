@@ -1,22 +1,23 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Menus;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LevelMobileShortcuts : MenuShortcuts
+namespace Assets.Scripts.Menus
 {
-    void Start()
+    public class LevelMobileShortcuts : MenuShortcuts
     {
-        if (Utilities.Platform != Utilities.PlatformType.Mobile)
+        void Start()
         {
-            Destroy(this);
+            if (Utilities.Platform != Utilities.PlatformType.Mobile)
+            {
+                Destroy(this);
+            }
         }
-    }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        void Update()
         {
-            GameManager.Get().ShowPauseMenu();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameManager.Get().ShowPauseMenu();
+            }
         }
     }
 }

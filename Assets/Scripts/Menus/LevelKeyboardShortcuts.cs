@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-public class LevelKeyboardShortcuts : MenuKeyboardShortcuts
+namespace Assets.Scripts.Menus
 {
-    public KeyCode pauseKey = KeyCode.Escape;
-
-    protected override void AddShortcuts()
+    public class LevelKeyboardShortcuts : MenuKeyboardShortcuts
     {
-    }
+        public KeyCode pauseKey = KeyCode.Escape;
 
-    protected override void CheckForShortcutPressed()
-    {
-        if (Input.GetKeyDown(pauseKey))
+        protected override void AddShortcuts()
         {
-            GameManager.Get().ShowPauseMenu();
+        }
+
+        protected override void CheckForShortcutPressed()
+        {
+            if (Input.GetKeyDown(pauseKey))
+            {
+                GameManager.Get().ShowPauseMenu();
+            }
         }
     }
 }

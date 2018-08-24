@@ -1,35 +1,38 @@
-﻿using Assets.Scripts;
+﻿using Assets.Scripts.Audio;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Credits : MonoBehaviour
+namespace Assets.Scripts.Menus
 {
-    public Text scoreText;
-    public string scoreTextPrefix = "Score: ";
-
-    private void Start()
+    public class Credits : MonoBehaviour
     {
-        AudioManager.Instance.StopAllPlayingSounds();
-        AudioManager.Instance.Play("GameLostSound");
+        public Text scoreText;
+        public string scoreTextPrefix = "Score: ";
 
-        scoreText.text = string.Format(
-            "{0}{1}",
-            scoreTextPrefix,
-            GameData.Instance.score.ToIntegerString());
-    }
+        private void Start()
+        {
+            AudioManager.Instance.StopAllPlayingSounds();
+            AudioManager.Instance.Play("GameLostSound");
 
-    public void RestartAtCheckpoint()
-    {
-        GameManager.Get().RestartAtCheckpoint();
-    }
+            scoreText.text = string.Format(
+                "{0}{1}",
+                scoreTextPrefix,
+                GameData.Instance.score.ToIntegerString());
+        }
 
-    public void Restart()
-    {
-        GameManager.Get().RestartGame();
-    }
+        public void RestartAtCheckpoint()
+        {
+            GameManager.Get().RestartAtCheckpoint();
+        }
 
-    public void OpenStartMenu()
-    {
-        GameManager.Get().ShowStartMenu();
+        public void Restart()
+        {
+            GameManager.Get().RestartGame();
+        }
+
+        public void OpenStartMenu()
+        {
+            GameManager.Get().ShowStartMenu();
+        }
     }
 }

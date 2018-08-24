@@ -1,38 +1,49 @@
 ﻿using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+namespace Assets.Scripts
 {
-    public Transform player;
-    public Vector3 offset;
-    public bool isSmoothFollow = true;
-    public float smoothFactor = 10f;
-
-    void FixedUpdate()
+    public class FollowPlayer : MonoBehaviour
     {
-        if (GameManager.Get().GameHasEnded)
-            return;
+        public Transform player;
+        public Vector3 offset;
+        public bool isSmoothFollow = true;
+        public float smoothFactor = 10f;
 
-        if (isSmoothFollow)
-            SmoothFollow();
-        else
-            NormalFollow();
-    }
+        void FixedUpdate()
+        {
+            if (GameManager.Get().GameHasEnded)
+            {
+                return;
+            }
 
-    private void NormalFollow()
-    {
-        transform.position = player.position + offset;
-    }
+            if (isSmoothFollow)
+            {
+                SmoothFollow();
+            }
+            else
+            {
+                NormalFollow();
+            }
+        }
 
-    private void SmoothFollow()
-    {
-        var desiredPosition = player.position + offset;
-        var position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * smoothFactor);
-        position.z = player.position.z + offset.z;
+        private void NormalFollow()
+        {
+            transform.position = player.position + offset;
+        }
 
-        if (transform.position == position)
-            return;
+        private void SmoothFollow()
+        {
+            var desiredPosition = player.position + offset;
+            var position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * smoothFactor);
+            position.z = player.position.z + offset.z;
 
-        transform.position = position;
-        transform.LookAt(player);
+            if (transform.position == position)
+            {
+                return;
+            }
+
+            transform.position = position;
+            transform.LookAt(player);
+        }
     }
 }

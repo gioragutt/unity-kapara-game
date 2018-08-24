@@ -1,24 +1,28 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
 using UnityEditor;
+using UnityEngine;
 
-[CustomEditor(typeof(ObstaclesGenerator))]
-public class ObstaclesGeneratorEditor : Editor
+namespace Assets.Editor
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(ObstaclesGenerator))]
+    public class ObstaclesGeneratorEditor : UnityEditor.Editor
     {
-        DrawDefaultInspector();
-
-        if (GUILayout.Button("Regenerate Obstacles"))
-            Script.GenerateObstaclesFromEditor();
-        if (GUILayout.Button("Remove Obstacles"))
-            Script.RemoveObstaclesFromEditor();
-    }
-
-    public ObstaclesGenerator Script
-    {
-        get
+        public override void OnInspectorGUI()
         {
-            return (ObstaclesGenerator)target;
+            DrawDefaultInspector();
+
+            if (GUILayout.Button("Regenerate Obstacles"))
+                Script.GenerateObstaclesFromEditor();
+            if (GUILayout.Button("Remove Obstacles"))
+                Script.RemoveObstaclesFromEditor();
+        }
+
+        public ObstaclesGenerator Script
+        {
+            get
+            {
+                return (ObstaclesGenerator)target;
+            }
         }
     }
 }
