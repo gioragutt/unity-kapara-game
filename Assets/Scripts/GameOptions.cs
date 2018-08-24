@@ -48,7 +48,7 @@ namespace Assets.Scripts
 
         #endregion Volume
 
-        #region Volume
+        #region Graphics Quality
 
         public const string GraphicsQualityPerfString = "GraphicsQuality";
         public static int GraphicsQuality
@@ -67,7 +67,56 @@ namespace Assets.Scripts
             }
         }
 
-        #endregion Volume
+        #endregion Graphics Quality
+
+        #region Mobile Control Style
+
+        public enum MobileControlStyles
+        {
+            NoGui,
+            Gui,
+        }
+
+        public const string MobileControlStylePerfString = "MobileControlStyle";
+        public static MobileControlStyles MobileControlStyle
+        {
+            get
+            {
+                return (MobileControlStyles)ReturnWithDefault(
+                    MobileControlStylePerfString, (int)MobileControlStyles.Gui);
+            }
+            set
+            {
+                if (value == MobileControlStyle)
+                    return;
+
+                PlayerPrefs.SetInt(MobileControlStylePerfString, (int)value);
+                OnMobileControlStyleChanged(value);
+            }
+        }
+
+        public class MobileControlStyleChangedEventArgs : EventArgs
+        {
+            public MobileControlStyles MobileControlStyle
+            {
+                get; set;
+            }
+        }
+
+        public static event EventHandler<MobileControlStyleChangedEventArgs> MobileControlStyleChanged;
+
+        private static void OnMobileControlStyleChanged(MobileControlStyles mobileControlStyle)
+        {
+            if (MobileControlStyleChanged != null)
+            {
+                MobileControlStyleChanged.Invoke(null, new MobileControlStyleChangedEventArgs
+                {
+                    MobileControlStyle = mobileControlStyle
+                });
+            }
+        }
+
+        #endregion Mobile Control Style
 
         #region Utilities
 
