@@ -1,8 +1,8 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Menus;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
+using Assets.Scripts.Menus;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -150,8 +150,8 @@ public class GameManager : MonoBehaviour
         var nextValue = !component.enabled;
         Debug.LogFormat(
             "Toggling {0} ({1} -> {2})",
-            component.name, 
-            component.enabled, 
+            component.name,
+            component.enabled,
             nextValue);
         component.enabled = nextValue;
     }
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarningFormat("CloseAdditiveScene(\"{0}\") called without opening it first", sceneName);
             return;
-        };
+        }
 
         Debug.LogFormat("CloseAdditiveScene(\"{0}\")", sceneName);
         SceneManager.UnloadSceneAsync(sceneName);
@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameEnded != null)
         {
-            GameEnded.Invoke(null, null);
+            GameEnded.Invoke(null, EventArgs.Empty);
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -9,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class ParticleCollision : MonoBehaviour
 {
-    private List<ParticleCollisionEvent> m_CollisionEvents = new List<ParticleCollisionEvent>();
+    private readonly List<ParticleCollisionEvent> m_CollisionEvents = new List<ParticleCollisionEvent>();
     private ParticleSystem m_ParticleSystem;
 
 
@@ -17,7 +16,6 @@ public class ParticleCollision : MonoBehaviour
     {
         m_ParticleSystem = GetComponent<ParticleSystem>();
     }
-
 
     private void OnParticleCollision(GameObject other)
     {

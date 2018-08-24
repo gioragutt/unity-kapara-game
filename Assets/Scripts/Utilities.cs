@@ -45,7 +45,7 @@ namespace Assets.Scripts
 
         public static T ParseToEnum<T>(this string str)
         {
-            return (T)System.Enum.Parse(typeof(T), str);
+            return (T)Enum.Parse(typeof(T), str);
         }
 
         public static void ForEach<T>(IEnumerable<T> items, Action<T> action)

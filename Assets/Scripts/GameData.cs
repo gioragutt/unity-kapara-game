@@ -22,7 +22,7 @@ public class GameData : MonoBehaviour
         var currentScene = SceneManager.GetActiveScene().name;
         return currentScene.StartsWith("Level") ? currentScene : GameManager.FirstLevelSceneName;
     }
-    
+
     public float UpdateHighscore()
     {
         var highscore = PlayerPrefs.GetFloat(HighscorePerfsKey, -1);

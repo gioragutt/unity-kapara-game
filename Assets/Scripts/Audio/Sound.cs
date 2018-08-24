@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Sound
 {
     public string name;
@@ -13,7 +14,7 @@ public class Sound
     [HideInInspector]
     public float originalVolume;
 
-    [Range(.3f,3f)]
+    [Range(.3f, 3f)]
     public float pitch;
 
     public bool loop;

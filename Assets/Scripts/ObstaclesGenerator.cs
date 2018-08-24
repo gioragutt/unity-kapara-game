@@ -1,7 +1,7 @@
-﻿using Assets.Scripts;
-using Assets.Scripts.Obstacles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts;
+using Assets.Scripts.Obstacles;
 using UnityEngine;
 
 public class ObstaclesGenerator : MonoBehaviour

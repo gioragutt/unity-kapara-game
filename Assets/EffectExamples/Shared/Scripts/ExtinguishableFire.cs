@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 /// <summary>
 /// This simulate an extinguishable fire, 
@@ -34,7 +32,7 @@ public class ExtinguishableFire : MonoBehaviour
         StartCoroutine(Extinguishing());
     }
 
-    IEnumerator Extinguishing()
+    private IEnumerator Extinguishing()
     {
         fireParticleSystem.Stop();
         smokeParticleSystem.time = 0;
@@ -62,7 +60,7 @@ public class ExtinguishableFire : MonoBehaviour
         StartCoroutine(StartingFire());
     }
 
-    IEnumerator StartingFire()
+    private IEnumerator StartingFire()
     {
         smokeParticleSystem.Stop();
         fireParticleSystem.time = 0;
