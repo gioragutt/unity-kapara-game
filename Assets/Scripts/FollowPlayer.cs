@@ -7,7 +7,7 @@ public class FollowPlayer : MonoBehaviour
     public bool isSmoothFollow = true;
     public float smoothFactor = 10f;
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (GameManager.Get().GameHasEnded)
             return;

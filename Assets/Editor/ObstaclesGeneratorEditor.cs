@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(ObstaclesGenerator))]
 public class ObstaclesGeneratorEditor : Editor

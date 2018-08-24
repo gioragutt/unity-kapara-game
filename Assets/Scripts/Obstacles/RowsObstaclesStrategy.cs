@@ -69,8 +69,8 @@ namespace Assets.Scripts.Obstacles
 
             return new List<Obstacle>
             {
-                CreateLeftObstacle(row, gapSize, initialPosition, gapCenterX),
-                CreateRightObstacle(row, gapSize, initialPosition, gapCenterX)
+                CreateLeftObstacle(gapSize, initialPosition, gapCenterX),
+                CreateRightObstacle(gapSize, initialPosition, gapCenterX)
             };
         }
 
@@ -88,23 +88,23 @@ namespace Assets.Scripts.Obstacles
                 (gapSize / 2) - GroundWidth / 2;
         }
 
-        private Obstacle CreateLeftObstacle(int row, float gapSize, Vector3 initialPosition, float gapCenterX)
+        private Obstacle CreateLeftObstacle(float gapSize, Vector3 initialPosition, float gapCenterX)
         {
             var gapLeftX = gapCenterX - gapSize / 2;
             var leftWidth = gapLeftX + GroundWidth / 2;
             var leftCenter = gapLeftX - leftWidth / 2;
-            return CreateObstacle(row, "Left", initialPosition, leftCenter, leftWidth);
+            return CreateObstacle(initialPosition, leftCenter, leftWidth);
         }
 
-        private Obstacle CreateRightObstacle(int row, float gapSize, Vector3 initialPosition, float gapCenterX)
+        private Obstacle CreateRightObstacle(float gapSize, Vector3 initialPosition, float gapCenterX)
         {
             var gapRightX = gapCenterX + gapSize / 2;
             var rightWidth = GroundWidth / 2 - gapRightX;
             var rightCenter = gapRightX + rightWidth / 2;
-            return CreateObstacle(row, "Right", initialPosition, rightCenter, rightWidth);
+            return CreateObstacle(initialPosition, rightCenter, rightWidth);
         }
 
-        private Obstacle CreateObstacle(int row, string side, Vector3 initialPosition, float centerX, float scaleX)
+        private Obstacle CreateObstacle(Vector3 initialPosition, float centerX, float scaleX)
         {
             var position = initialPosition + new Vector3(centerX, 0, 0);
             return new Obstacle

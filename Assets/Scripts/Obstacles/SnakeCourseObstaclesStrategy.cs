@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Obstacles
 {
     public class SnakeCourseObstaclesStrategy : IObstaclesGenerationStrategy
     {
-        [System.Serializable]
+        [Serializable]
         public class Configuration
         {
             public int rows;

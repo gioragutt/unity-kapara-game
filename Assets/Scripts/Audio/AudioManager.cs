@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
 using Assets.Scripts.Audio;
 using Assets.Scripts.Options;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogWarningFormat("Sound \"{0}\" not found", name);
         }
-	}
+    }
 
     public void FadeOutAllPlayingSource(float fadeDuration)
     {
