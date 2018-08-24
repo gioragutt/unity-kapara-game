@@ -18,7 +18,6 @@ public class PauseMenuKeyboardShortcuts : MenuKeyboardShortcuts
 
     private void OnEnable()
     {
-        Debug.Log("On Pause Menu Enabled");
         if (Input.GetKey(resumeKey))
         {
             allowResume = false;
