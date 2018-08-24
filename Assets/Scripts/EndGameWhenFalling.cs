@@ -1,11 +1,11 @@
 ﻿
+using Assets.Scripts;
 using UnityEngine;
 
 public class EndGameWhenFalling : MonoBehaviour
 {
     public PlayerMovement player;
     public float height = -2f;
-    public GameObject explosionEffect;
 
     void FixedUpdate()
     {
@@ -13,18 +13,7 @@ public class EndGameWhenFalling : MonoBehaviour
             return;
 
         Debug.Log("Fell off the platform");
-        DestroyPlayer();
+        GetComponent<PlayerDeath>().DestroyPlayer();
         GameManager.Get().EndGame();
-    }
-
-    private void DestroyPlayer()
-    {
-        player.StopPlayer();
-
-        FindObjectOfType<FollowPlayer>().enabled = false;
-
-        AudioManager.Instance.Play("ExplosionSound");
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
     }
 }
