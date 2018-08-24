@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts
+﻿namespace Assets.Scripts
 {
     public class MobileGuiControl : MobileGameControl
     {
+        public PlayerMovement player;
+
         protected MobileGuiControl()
         : base(GameOptions.MobileControlStyles.Gui)
         {
@@ -11,22 +11,22 @@ namespace Assets.Scripts
 
         public void StartMovingLeft()
         {
-            Debug.Log("StartMovingLeft");
+            player.IsMovingLeft = true;
         }
 
         public void StartMovingRight()
         {
-            Debug.Log("StartMovingRight");
+            player.IsMovingRight = true;
         }
 
         public void StopMovingLeft()
         {
-            Debug.Log("StopMovingLeft");
+            player.IsMovingLeft = false;
         }
 
         public void StopMovingRight()
         {
-            Debug.Log("StopMovingRight");
+            player.IsMovingRight = false;
         }
 
         public void PauseGame()

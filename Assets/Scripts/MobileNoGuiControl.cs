@@ -6,8 +6,8 @@ namespace Assets.Scripts
     {
         private struct ScreenSidesTouched
         {
-            public bool left;
-            public bool right;
+            public readonly bool left;
+            public readonly bool right;
 
             public ScreenSidesTouched(bool left, bool right)
             {
@@ -19,6 +19,8 @@ namespace Assets.Scripts
                 new ScreenSidesTouched(false, false);
         }
 
+        public PlayerMovement player;
+
         protected MobileNoGuiControl()
         : base(GameOptions.MobileControlStyles.NoGui)
         {
@@ -26,7 +28,14 @@ namespace Assets.Scripts
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameManager.Get().ShowPauseMenu();
+            }
+
             var sidesTouched = DetectTouches();
+            player.IsMovingLeft = sidesTouched.left;
+            player.IsMovingRight = sidesTouched.right;
         }
 
         ScreenSidesTouched DetectTouches()

@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Menus;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class MobileGameControl : MonoBehaviour
+    public class MobileGameControl : MenuShortcuts
     {
         protected GameOptions.MobileControlStyles mobileControlStyle;
 
@@ -13,12 +14,6 @@ namespace Assets.Scripts
 
         void Start()
         {
-            if (Utilities.Platform != Utilities.PlatformType.Mobile)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
             ActivateIfGuiControl(GameOptions.MobileControlStyle);
             GameOptions.MobileControlStyleChanged += OnMobileControlStyleChanged;
         }
@@ -30,7 +25,9 @@ namespace Assets.Scripts
 
         private void ActivateIfGuiControl(GameOptions.MobileControlStyles controlStyle)
         {
-            gameObject.SetActive(controlStyle == mobileControlStyle);
+            var isActive = controlStyle == mobileControlStyle;
+            Debug.LogFormat("Setting {0} Active = {1}", GetType(), isActive);
+            gameObject.SetActive(isActive);
         }
     }
 }
