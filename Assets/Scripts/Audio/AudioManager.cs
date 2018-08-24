@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Assets.Scripts.Audio;
-using Assets.Scripts.Options;
+using Assets.Scripts;
 
 public class AudioManager : MonoBehaviour
 {

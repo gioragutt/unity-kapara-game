@@ -1,23 +1,34 @@
-﻿using Assets.Scripts.Options;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsMenu : MonoBehaviour
+namespace Assets.Scripts.Menus
 {
-    public Slider volume;
-
-    private void Start()
+    public class OptionsMenu : MonoBehaviour
     {
-        volume.value = GameOptions.Volume * volume.maxValue;
-    }
+        public Slider volume;
+        public Dropdown graphicsQuality;
 
-    public void ChangeVolume(float value)
-    {
-        GameOptions.Volume = value / volume.maxValue;
-    }
+        private void Start()
+        {
+            volume.value = GameOptions.Volume * volume.maxValue;
+            graphicsQuality.options = QualitySettings.names.Select(name => new Dropdown.OptionData(name)).ToList();
+            graphicsQuality.value = GameOptions.GraphicsQuality;
+        }
 
-    public void Resume()
-    {
-        GameManager.Get().ResumeFromOptions();
+        public void ChangeQualityLevel(int selected)
+        {
+            GameOptions.GraphicsQuality = selected;
+        }
+
+        public void ChangeVolume(float value)
+        {
+            GameOptions.Volume = value / volume.maxValue;
+        }
+
+        public void Resume()
+        {
+            GameManager.Get().ResumeFromOptions();
+        }
     }
 }

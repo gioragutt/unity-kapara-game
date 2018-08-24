@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Options
+namespace Assets.Scripts
 {
     public static class GameOptions
     {
@@ -48,6 +48,27 @@ namespace Assets.Scripts.Options
 
         #endregion Volume
 
+        #region Volume
+
+        public const string GraphicsQualityPerfString = "GraphicsQuality";
+        public static int GraphicsQuality
+        {
+            get
+            {
+                return ReturnWithDefault(GraphicsQualityPerfString, QualitySettings.GetQualityLevel());
+            }
+            set
+            {
+                if (value == Volume)
+                    return;
+
+                QualitySettings.SetQualityLevel(value);
+                PlayerPrefs.SetInt(VolumePerfString, value);
+            }
+        }
+
+        #endregion Volume
+
         #region Utilities
 
         private static float Clamp(float min, float max, float value)
@@ -57,6 +78,15 @@ namespace Assets.Scripts.Options
             if (value < min)
                 return min;
             return value;
+        }
+
+        private static int ReturnWithDefault(string key, int defaultValue)
+        {
+            if (!PlayerPrefs.HasKey(key))
+            {
+                PlayerPrefs.SetInt(key, defaultValue);
+            }
+            return PlayerPrefs.GetInt(key);
         }
 
         private static float ReturnWithDefault(string key, float defaultValue)
