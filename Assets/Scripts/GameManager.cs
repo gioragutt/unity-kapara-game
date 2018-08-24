@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     public void ShowStartMenu()
     {
         Time.timeScale = 1f;
-        LoadScene(0);
+        StartCoroutine(LoadScene(0));
     }
 
     public void ShowPauseMenu()
@@ -58,14 +59,14 @@ public class GameManager : MonoBehaviour
     public void RestartAtCheckpoint()
     {
         GameData.Instance.score = GameData.Instance.scoreAtCheckpoint;
-        LoadScene(GameData.Instance.checkpointSceneName);
+        StartCoroutine(LoadScene(GameData.Instance.checkpointSceneName));
     }
 
     public void LoadNextLevel()
     {
         var nextSceneBuildIndex = NextSceneBuildIndex;
-        LoadScene(nextSceneBuildIndex);
         SaveCheckpoint(nextSceneBuildIndex);
+        StartCoroutine(LoadScene(nextSceneBuildIndex));
     }
 
     public void CompleteLevel()
@@ -96,12 +97,12 @@ public class GameManager : MonoBehaviour
 
     private void ShowCredits()
     {
-        LoadScene(CreditsSceneName);
+        StartCoroutine(LoadScene(CreditsSceneName));
     }
 
     public void RestartGame()
     {
-        LoadScene(FirstLevelSceneName);
+        StartCoroutine(LoadScene(FirstLevelSceneName));
         ResetGameData();
     }
 
@@ -127,15 +128,15 @@ public class GameManager : MonoBehaviour
         GameData.Instance.checkpointSceneName = Utilities.NameOfSceneByBuildIndex(nextSceneBuildIndex);
     }
 
-    private void LoadScene(string sceneName)
+    private IEnumerator LoadScene(string sceneName)
     {
-        SceneLoader.Instance.LoadScene(sceneName);
+        yield return StartCoroutine(SceneLoader.Instance.LoadScene(sceneName));
         GameHasEnded = false;
     }
 
-    private void LoadScene(int buildIndex)
+    private IEnumerator LoadScene(int buildIndex)
     {
-        SceneLoader.Instance.LoadScene(buildIndex);
+        yield return StartCoroutine(SceneLoader.Instance.LoadScene(buildIndex));
         GameHasEnded = false;
     }
 

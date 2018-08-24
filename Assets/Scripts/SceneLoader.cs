@@ -9,6 +9,7 @@ namespace Assets.Scripts
 {
     public class SceneLoader : MonoBehaviour
     {
+        public Transform loadingUi;
         private readonly Stack<string> activeScenes = new Stack<string>();
 
         #region Implementation
@@ -47,7 +48,7 @@ namespace Assets.Scripts
             ToggleKeyboardShortcuts(current);
             activeScenes.Push(current.name);
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-            yield return new WaitForEndOfFrame(); // wait for scene to load
+            yield return null;
             var nextScene = SceneManager.GetSceneByName(sceneName);
             SceneManager.SetActiveScene(nextScene);
         }
@@ -73,22 +74,26 @@ namespace Assets.Scripts
             var nextValue = !component.enabled;
             Debug.LogFormat(
                 "Toggling {0} ({1} -> {2})",
-                component.name,
+                component.GetType(),
                 component.enabled,
                 nextValue);
             component.enabled = nextValue;
         }
 
-        public void LoadScene(string sceneName)
+        public IEnumerator LoadScene(string sceneName)
         {
-            SceneManager.LoadScene(sceneName);
+            var gui = Instantiate(loadingUi, FindObjectOfType<Canvas>().transform);
+            Destroy(gui.gameObject);
+            yield return new WaitForSceneToLoad(sceneName);
             var newScene = SceneManager.GetSceneByName(sceneName);
             Debug.Log("Loaded Scene: " + newScene.name);
         }
 
-        public void LoadScene(int buildIndex)
+        public IEnumerator LoadScene(int buildIndex)
         {
-            SceneManager.LoadScene(buildIndex);
+            var gui = Instantiate(loadingUi, FindObjectOfType<Canvas>().transform);
+            yield return new WaitForSceneToLoad(buildIndex);
+            Destroy(gui.gameObject);
             var newScene = SceneManager.GetSceneByBuildIndex(buildIndex);
             Debug.Log("Loaded Scene: " + newScene.name);
         }
