@@ -8,7 +8,7 @@ public class LevelMobileShortcuts : MenuShortcuts
     {
         if (Utilities.Platform != Utilities.PlatformType.Mobile)
         {
-            enabled = false;
+            Destroy(this);
         }
     }
 
