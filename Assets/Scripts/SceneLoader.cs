@@ -55,7 +55,7 @@ namespace Assets.Scripts
 
         private void ToggleKeyboardShortcuts(Scene scene)
         {
-            Debug.Log("Toggling keys for scene: \"" + scene.name + "\"");
+            Debug.Log("ToggleKeyboardShortcuts(\"" + scene.name + "\")");
             foreach (var go in scene.GetRootGameObjects())
             {
                 var shortcuts = go.GetComponentsInChildren<MenuShortcuts>();
@@ -73,7 +73,7 @@ namespace Assets.Scripts
         {
             var nextValue = !component.enabled;
             Debug.LogFormat(
-                "Toggling {0} ({1} -> {2})",
+                " | -- {0} ({1} -> {2})",
                 component.GetType(),
                 component.enabled,
                 nextValue);
