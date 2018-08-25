@@ -19,10 +19,24 @@ namespace Assets.Scripts.Menus
 
         private void Start()
         {
+            InitVolume();
+            InitGrapgicsQuality();
+            InitMobileControlStyle();
+        }
+
+        private void InitVolume()
+        {
             volume.value = GameOptions.Volume * volume.maxValue;
+        }
+
+        private void InitGrapgicsQuality()
+        {
             graphicsQuality.options = QualitySettings.names.Select(name => new Dropdown.OptionData(name)).ToList();
             graphicsQuality.value = GameOptions.GraphicsQuality;
+        }
 
+        private void InitMobileControlStyle()
+        {
             if (Utilities.Platform == Utilities.PlatformType.Mobile)
             {
                 controlStyle.value = indexToControlStyle.First(

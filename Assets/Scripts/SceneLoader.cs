@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -58,7 +59,10 @@ namespace Assets.Scripts
             Debug.Log("ToggleKeyboardShortcuts(\"" + scene.name + "\")");
             foreach (var go in scene.GetRootGameObjects())
             {
-                var shortcuts = go.GetComponentsInChildren<MenuShortcuts>();
+                var shortcuts = go.GetComponentsInChildren<MenuShortcuts>(true)
+                    .Where(m => !m.ForceDisabled)
+                    .ToArray();
+
                 if (shortcuts.Length == 0)
                 {
                     continue;
