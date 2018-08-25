@@ -59,11 +59,11 @@ namespace Assets.Scripts
             }
             set
             {
-                if (value == Volume)
+                if (value == GraphicsQuality)
                     return;
 
                 QualitySettings.SetQualityLevel(value);
-                PlayerPrefs.SetInt(VolumePerfString, value);
+                PlayerPrefs.SetInt(GraphicsQualityPerfString, value);
             }
         }
 
