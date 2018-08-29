@@ -31,6 +31,7 @@ namespace Assets.Scripts
             Debug.LogFormat("<MobileControlManager> Setting {0} Active = {1}", control.GetType().Name, isActive);
             control.ForceDisabled = !isActive;
             control.gameObject.SetActive(isActive);
+            control.enabled = true;
             DisableIfChangedInOptions(control, isStartup, isActive);
         }
 
