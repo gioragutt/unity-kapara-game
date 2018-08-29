@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -61,6 +62,20 @@ namespace Assets.Scripts
             string name = path.Substring(slash + 1);
             int dot = name.LastIndexOf('.');
             return name.Substring(0, dot);
+        }
+
+        public static List<T> FindObjectsOfType<T>()
+        {
+            var returned = new List<T>();
+            var activeSceneCount = SceneManager.sceneCount;
+            for (int i = 0; i < activeSceneCount; ++i)
+            {
+                var objectsInScene = SceneManager.GetSceneAt(i)
+                    .GetRootGameObjects()
+                    .SelectMany(g => g.GetComponentsInChildren<T>(true));
+                returned.AddRange(objectsInScene);
+            }
+            return returned;
         }
     }
 }

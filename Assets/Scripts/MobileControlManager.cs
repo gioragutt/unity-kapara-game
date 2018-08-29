@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -18,8 +17,8 @@ namespace Assets.Scripts
 
         private static void SetControlActiveOnAll(GameOptions.MobileControlStyles controlStyle, bool isStartup)
         {
-            Array.ForEach(
-                Resources.FindObjectsOfTypeAll<MobileGameControl>(),
+            Debug.LogFormat("<MobileControlManager> Called with style={0}, isStartup={1}", controlStyle, isStartup);
+            Utilities.FindObjectsOfType<MobileGameControl>().ForEach(
                 control => SetControlActive(control, controlStyle, isStartup));
         }
 
