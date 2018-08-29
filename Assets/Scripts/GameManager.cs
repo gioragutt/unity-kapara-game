@@ -30,6 +30,14 @@ namespace Assets.Scripts
             return FindObjectOfType<GameManager>();
         }
 
+        private void Start()
+        {
+            if (shouldBuildLevel)
+            {
+                Debug.LogFormat("<GameManager> Starting \"{0}\"", levelName);
+            }
+        }
+
         #region Public API
 
         public void ShowStartMenu()
