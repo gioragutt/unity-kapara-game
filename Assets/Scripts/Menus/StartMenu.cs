@@ -29,6 +29,11 @@ namespace Assets.Scripts.Menus
             GameManager.Get().ShowOptionsMenu();
         }
 
+        public void OpenAbout()
+        {
+            GameManager.Get().ShowAbout();
+        }
+
         public void Quit()
         {
             Application.Quit();

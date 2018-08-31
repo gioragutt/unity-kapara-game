@@ -11,6 +11,7 @@ namespace Assets.Scripts
         public const string FirstLevelSceneName = "Level1";
         public const string CreditsSceneName = "Credits";
         public const string OptionsMenuSceneName = "OptionsMenu";
+        public const string AboutMenuSceneName = "AboutMenu";
         public const string PauseMenuSceneName = "PauseMenu";
 
         public string levelName;
@@ -64,6 +65,11 @@ namespace Assets.Scripts
         public void ResumeFromOptions()
         {
             SceneLoader.Instance.CloseAdditiveScene(OptionsMenuSceneName);
+        }
+
+        public void ShowAbout()
+        {
+            SceneLoader.Instance.LoadScene(AboutMenuSceneName);
         }
 
         public void RestartAtCheckpoint()
