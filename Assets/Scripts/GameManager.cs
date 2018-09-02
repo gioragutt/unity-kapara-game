@@ -69,7 +69,7 @@ namespace Assets.Scripts
 
         public void ShowAbout()
         {
-            SceneLoader.Instance.LoadScene(AboutMenuSceneName);
+            StartCoroutine(SceneLoader.Instance.LoadScene(AboutMenuSceneName));
         }
 
         public void RestartAtCheckpoint()
