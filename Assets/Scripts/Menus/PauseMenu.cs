@@ -14,9 +14,9 @@ namespace Assets.Scripts.Menus
             GameManager.Get().ShowOptionsMenu();
         }
 
-        public void OpenStartMenu()
+        public void OpenMainMenu()
         {
-            GameManager.Get().ShowStartMenu();
+            GameManager.Get().ShowMainMenu();
         }
     }
 }

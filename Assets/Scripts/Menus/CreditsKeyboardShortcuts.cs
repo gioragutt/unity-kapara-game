@@ -8,17 +8,17 @@ namespace Assets.Scripts.Menus
         public Credits credits;
         public Text restartAtCheckpointButtonText;
         public Text restartButtonText;
-        public Text startMenuButtonText;
+        public Text mainMenuButtonText;
 
         public KeyCode restartAtCheckpointKey = KeyCode.Return;
         public KeyCode restartKey = KeyCode.Backspace;
-        public KeyCode startMenuKey = KeyCode.Escape;
+        public KeyCode mainMenuKey = KeyCode.Escape;
 
         protected override void AddShortcuts()
         {
             restartAtCheckpointButtonText.AddKeyboardShortcutText(restartAtCheckpointKey);
             restartButtonText.AddKeyboardShortcutText(restartKey);
-            startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
+            mainMenuButtonText.AddKeyboardShortcutText(mainMenuKey);
         }
 
         protected override void CheckForShortcutPressed()
@@ -27,8 +27,8 @@ namespace Assets.Scripts.Menus
                 credits.RestartAtCheckpoint();
             if (Input.GetKeyDown(restartKey))
                 credits.Restart();
-            if (Input.GetKeyDown(startMenuKey))
-                credits.OpenStartMenu();
+            if (Input.GetKeyDown(mainMenuKey))
+                credits.OpenMainMenu();
         }
     }
 }

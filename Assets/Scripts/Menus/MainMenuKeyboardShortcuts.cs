@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Menus
 {
-    public class StartMenuKeyboardShortcuts : MenuKeyboardShortcuts
+    public class MainMenuKeyboardShortcuts : MenuKeyboardShortcuts
     {
-        public StartMenu startMenu;
+        public MainMenu mmainMenu;
         public Text startButtonText;
         public Text optionsButtonText;
         public Text aboutButtonText;
@@ -27,13 +27,13 @@ namespace Assets.Scripts.Menus
         protected override void CheckForShortcutPressed()
         {
             if (Input.GetKeyDown(startKey))
-                startMenu.StartGame();
+                mmainMenu.StartGame();
             if (Input.GetKeyDown(optionsKey))
-                startMenu.OpenOptions();
+                mmainMenu.OpenOptions();
             if (Input.GetKeyDown(aboutKey))
-                startMenu.OpenAbout();
+                mmainMenu.OpenAbout();
             if (Input.GetKeyDown(quitKey))
-                startMenu.Quit();
+                mmainMenu.Quit();
         }
     }
 }

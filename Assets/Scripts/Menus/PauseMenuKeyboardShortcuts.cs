@@ -9,11 +9,11 @@ namespace Assets.Scripts.Menus
         public PauseMenu pauseMenu;
         public Text resumeButtonText;
         public Text optionsButtonText;
-        public Text startMenuButtonText;
+        public Text mainMenuButtonText;
 
         public KeyCode resumeKey = KeyCode.Escape;
         public KeyCode optionsKey = KeyCode.O;
-        public KeyCode startMenuKey = KeyCode.M;
+        public KeyCode mainMenuKey = KeyCode.M;
 
         private bool allowResume = true;
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Menus
         {
             resumeButtonText.AddKeyboardShortcutText(resumeKey);
             optionsButtonText.AddKeyboardShortcutText(optionsKey);
-            startMenuButtonText.AddKeyboardShortcutText(startMenuKey);
+            mainMenuButtonText.AddKeyboardShortcutText(mainMenuKey);
         }
 
         protected override void CheckForShortcutPressed()
@@ -43,8 +43,8 @@ namespace Assets.Scripts.Menus
                 pauseMenu.Resume();
             if (Input.GetKeyDown(optionsKey))
                 pauseMenu.OpenOptions();
-            if (Input.GetKeyDown(startMenuKey))
-                pauseMenu.OpenStartMenu();
+            if (Input.GetKeyDown(mainMenuKey))
+                pauseMenu.OpenMainMenu();
         }
 
         private IEnumerator WaitForResumeKeyToBeUnpressed()

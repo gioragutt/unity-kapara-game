@@ -5,6 +5,6 @@ public class AboutMenu : MonoBehaviour
 {
     public void Resume()
     {
-        GameManager.Get().ShowStartMenu();
+        GameManager.Get().ShowMainMenu();
     }
 }

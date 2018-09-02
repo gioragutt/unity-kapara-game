@@ -41,7 +41,7 @@ namespace Assets.Scripts
 
         #region Public API
 
-        public void ShowStartMenu()
+        public void ShowMainMenu()
         {
             Time.timeScale = 1f;
             StartCoroutine(LoadScene(0));

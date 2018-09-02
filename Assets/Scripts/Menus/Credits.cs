@@ -30,9 +30,9 @@ namespace Assets.Scripts.Menus
             GameManager.Get().RestartGame();
         }
 
-        public void OpenStartMenu()
+        public void OpenMainMenu()
         {
-            GameManager.Get().ShowStartMenu();
+            GameManager.Get().ShowMainMenu();
         }
     }
 }

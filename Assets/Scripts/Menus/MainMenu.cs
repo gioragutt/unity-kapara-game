@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Menus
 {
-    public class StartMenu : MonoBehaviour
+    public class MainMenu : MonoBehaviour
     {
         public enum StartSoundOption
         {
