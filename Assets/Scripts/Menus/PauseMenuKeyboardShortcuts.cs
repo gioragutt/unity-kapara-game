@@ -8,10 +8,12 @@ namespace Assets.Scripts.Menus
     {
         public PauseMenu pauseMenu;
         public Text resumeButtonText;
+        public Text restartAtCheckpointButtonText;
         public Text optionsButtonText;
         public Text mainMenuButtonText;
 
         public KeyCode resumeKey = KeyCode.Escape;
+        public KeyCode restartAtCheckpointKey = KeyCode.Return;
         public KeyCode optionsKey = KeyCode.O;
         public KeyCode mainMenuKey = KeyCode.M;
 
@@ -28,6 +30,7 @@ namespace Assets.Scripts.Menus
         protected override void AddShortcuts()
         {
             resumeButtonText.AddKeyboardShortcutText(resumeKey);
+            restartAtCheckpointButtonText.AddKeyboardShortcutText(restartAtCheckpointKey);
             optionsButtonText.AddKeyboardShortcutText(optionsKey);
             mainMenuButtonText.AddKeyboardShortcutText(mainMenuKey);
         }
@@ -41,6 +44,8 @@ namespace Assets.Scripts.Menus
 
             if (allowResume && Input.GetKeyDown(resumeKey))
                 pauseMenu.Resume();
+            if (Input.GetKeyDown(restartAtCheckpointKey))
+                pauseMenu.RestartAtCheckpoint();
             if (Input.GetKeyDown(optionsKey))
                 pauseMenu.OpenOptions();
             if (Input.GetKeyDown(mainMenuKey))

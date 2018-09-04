@@ -9,6 +9,11 @@ namespace Assets.Scripts.Menus
             GameManager.Get().ResumeFromPauseMenu();
         }
 
+        public void RestartAtCheckpoint()
+        {
+            GameManager.Get().RestartAtCheckpoint();
+        }
+
         public void OpenOptions()
         {
             GameManager.Get().ShowOptionsMenu();
