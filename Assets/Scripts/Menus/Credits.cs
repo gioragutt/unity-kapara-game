@@ -25,11 +25,6 @@ namespace Assets.Scripts.Menus
             GameManager.Get().RestartAtCheckpoint();
         }
 
-        public void Restart()
-        {
-            GameManager.Get().RestartGame();
-        }
-
         public void OpenMainMenu()
         {
             GameManager.Get().ShowMainMenu();
