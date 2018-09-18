@@ -5,7 +5,7 @@ namespace Assets.Scripts.Menus
 {
     public class MainMenuKeyboardShortcuts : MenuKeyboardShortcuts
     {
-        public MainMenu mmainMenu;
+        public MainMenu mainMenu;
         public Text startButtonText;
         public Text optionsButtonText;
         public Text aboutButtonText;
@@ -27,13 +27,13 @@ namespace Assets.Scripts.Menus
         protected override void CheckForShortcutPressed()
         {
             if (Input.GetKeyDown(startKey))
-                mmainMenu.StartGame();
+                mainMenu.StartGame();
             if (Input.GetKeyDown(optionsKey))
-                mmainMenu.OpenOptions();
+                mainMenu.OpenOptions();
             if (Input.GetKeyDown(aboutKey))
-                mmainMenu.OpenAbout();
+                mainMenu.OpenAbout();
             if (Input.GetKeyDown(quitKey))
-                mmainMenu.Quit();
+                mainMenu.Quit();
         }
     }
 }

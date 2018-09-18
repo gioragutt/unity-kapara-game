@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939b67d456d56bc4499958aa8d892804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMenu: {fileID: 1933959125}
+  mainMenu: {fileID: 1933959125}
   startButtonText: {fileID: 1176739949}
   optionsButtonText: {fileID: 145606410}
   aboutButtonText: {fileID: 65715270}
