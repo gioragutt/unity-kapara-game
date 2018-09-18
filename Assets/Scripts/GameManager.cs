@@ -75,6 +75,7 @@ namespace Assets.Scripts
         public void RestartAtCheckpoint()
         {
             GameData.Instance.score = GameData.Instance.scoreAtCheckpoint;
+            SceneLoader.Instance.CloseAdditiveScene(SceneManager.GetActiveScene().name);
             StartCoroutine(LoadScene(GameData.Instance.checkpointSceneName));
         }
 
