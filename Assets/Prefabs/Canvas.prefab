@@ -82,7 +82,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1599073081167796
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -898,6 +898,7 @@ RectTransform:
   - {fileID: 224161548385170766}
   - {fileID: 224565610547861644}
   - {fileID: 224356952920045434}
+  - {fileID: 224963678889258634}
   - {fileID: 224748777796927230}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -919,9 +920,8 @@ RectTransform:
   m_Children:
   - {fileID: 224061466839235462}
   - {fileID: 224626425165541230}
-  - {fileID: 224963678889258634}
   m_Father: {fileID: 224683303912156446}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -934,12 +934,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1599073081167796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 224748777796927230}
-  m_RootOrder: 2
+  m_Father: {fileID: 224683303912156446}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
