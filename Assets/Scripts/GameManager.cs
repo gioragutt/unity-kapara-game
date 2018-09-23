@@ -79,6 +79,12 @@ namespace Assets.Scripts
             StartCoroutine(LoadScene(GameData.Instance.checkpointSceneName));
         }
 
+        public void StartGameClean()
+        {
+            ResetGameData();
+            LoadNextLevel();
+        }
+
         public void LoadNextLevel()
         {
             var nextSceneBuildIndex = NextSceneBuildIndex;

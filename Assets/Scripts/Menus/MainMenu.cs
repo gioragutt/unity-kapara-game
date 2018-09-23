@@ -21,7 +21,7 @@ namespace Assets.Scripts.Menus
 
         public void StartGame()
         {
-            GameManager.Get().LoadNextLevel();
+            GameManager.Get().StartGameClean();
         }
 
         public void OpenOptions()
