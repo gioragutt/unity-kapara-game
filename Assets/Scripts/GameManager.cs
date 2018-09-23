@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Audio;
-using System;
+﻿using System;
 using System.Collections;
+using Assets.Scripts.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +15,7 @@ namespace Assets.Scripts
         public const string PauseMenuSceneName = "PauseMenu";
 
         public string levelName;
-        public float restartDelay = 3f;
+        public float restartDelay = 1.5f;
         public float endOfGameDelay = 3f;
         public GameObject completeLevelUi;
         public bool shouldBuildLevel = true;
